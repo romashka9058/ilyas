@@ -288,6 +288,56 @@
     }
   </style>
 </head>
+
+ <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const musicPrompt = document.getElementById('musicPrompt');
+      const bgMusic = document.getElementById('bg-music');
+      const modal = document.getElementById('modal');
+      const modalImage = document.getElementById('modalImage');
+      const closeBtn = document.querySelector('.close');
+      const galleryItems = document.querySelectorAll('.gallery-item, .evolution-image');
+      const musicButton = document.querySelector('#musicPrompt button');
+
+      function playMusic() {
+        bgMusic.play().then(() => {
+          musicPrompt.style.display = 'none';
+        }).catch(() => {
+          musicButton.textContent = "Нажмите для воспроизведения";
+        });
+      }
+
+      function openModal(e) {
+        modalImage.src = e.target.src;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+
+      // Event listeners
+      musicButton.addEventListener('click', playMusic);
+      closeBtn.addEventListener('click', closeModal);
+      
+      galleryItems.forEach(item => {
+        item.addEventListener('click', (e) => openModal(e));
+      });
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+          closeModal();
+        }
+      });
+    });
+  </script>
+
 <body>
   <header>
     <div class="container darker">
@@ -295,10 +345,6 @@
       <h1>Ильяс</h1>
       <p class="subtitle">Лидер, вдохновитель, наследник Африки</p>
     </div>
-    <audio id="bg-music" loop preload="auto">
-      <source src="music/2.mp3" type="audio/mp3">
-      Ваш браузер не поддерживает аудио.
-    </audio>
   </header>
 
   <div id="musicPrompt">
@@ -413,54 +459,12 @@
   <footer>
     <p>С первым апреля</p>
   </footer>
+  
+  <audio id="bg-music" loop preload="auto">
+      <source src="n.mp3">
+      Ваш браузер не поддерживает аудио.
+  </audio>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const musicPrompt = document.getElementById('musicPrompt');
-      const bgMusic = document.getElementById('bg-music');
-      const modal = document.getElementById('modal');
-      const modalImage = document.getElementById('modalImage');
-      const closeBtn = document.querySelector('.close');
-      const galleryItems = document.querySelectorAll('.gallery-item, .evolution-image');
-      const musicButton = document.querySelector('#musicPrompt button');
 
-      function playMusic() {
-        bgMusic.play().then(() => {
-          musicPrompt.style.display = 'none';
-        }).catch(() => {
-          musicButton.textContent = "Нажмите для воспроизведения";
-        });
-      }
-
-      function openModal(e) {
-        modalImage.src = e.target.src;
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-      }
-
-      // Event listeners
-      musicButton.addEventListener('click', playMusic);
-      closeBtn.addEventListener('click', closeModal);
-      
-      galleryItems.forEach(item => {
-        item.addEventListener('click', (e) => openModal(e));
-      });
-
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.style.display === 'flex') {
-          closeModal();
-        }
-      });
-    });
-  </script>
 </body>
 </html>
