@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КАЗИНО</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'BinnerDi';
+            src: url('font/ofont.ru_BinnerDi_1.woff') format('truetype');
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Copperplate';
+            src: url('font/ofont.ru_Copperplate.woff') format('truetype');
+            font-display: swap;
+        }
+
+        :root {
+            --primary: #FF0200;
+            --secondary: #FFB034;
+            --accent: #f39c12;
+            --dark: #1a1a1a;
+            --darker: #111;
+            --light: #fff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            --glow: 0 0 20px rgba(255, 87, 94, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Copperplate', sans-serif;
+            background: linear-gradient(135deg, #1e1e1e 0%, #2d1e1e 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23FF0200" stroke-width="0.5" opacity="0.1"/></svg>');
+            z-index: -1;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 4.5em;
+            margin: 20px 0;
+            text-shadow: var(--glow);
+            text-align: center;
+            position: relative;
+            animation: titleGlow 3s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 10px var(--primary); }
+            100% { text-shadow: 0 0 25px var(--primary), 0 0 35px var(--primary); }
+        }
+
+        .con {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .gcon {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow), var(--glow);
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 700px;
+            border: 2px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gcon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 87, 94, 0.8);
+        }
+
+        .gcon::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--primary));
+            z-index: -1;
+            filter: blur(20px);
+            opacity: 0.3;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .balance {
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            color: var(--light);
+            text-align: center;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #balance {
+            color: var(--secondary);
+            font-weight: bold;
+            font-family: 'BinnerDi', monospace;
+            text-shadow: 0 0 10px var(--secondary);
+        }
+
+        .slot-machine {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            width: 100%;
+            gap: 15px;
+            perspective: 1000px;
+        }
+
+        .slot {
+            font-size: 4em;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(145deg, #333, #222);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--accent);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            font-family: 'Copperplate', monospace;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            transform-style: preserve-3d;
+        }
+
+        .slot::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+        }
+
+        .slot.rolling::before {
+            animation: shine 0.5s linear;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .slot.rolling {
+            animation: roll 0.1s infinite;
+        }
+
+        @keyframes roll {
+            0% { transform: rotateX(0deg); }
+            100% { transform: rotateX(360deg); }
+        }
+
+        .spin-btn {
+            padding: 15px 40px;
+            background: linear-gradient(to bottom, var(--primary), #c0392b);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.3em;
+            margin-top: 20px;
+            font-family: 'Copperplate', monospace;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .spin-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #c0392b, var(--primary));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .spin-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .spin-btn:hover::before {
+            opacity: 1;
+        }
+
+        .spin-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .spin-btn:disabled {
+            background: #7f8c8d;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .spin-btn:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .debt-con {
+            background: rgba(255, 215, 0, 0.15);
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 350px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            text-align: center;
+            margin-bottom: 25px;
+            width: 100%;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .debt-con:hover {
+            transform: scale(1.03);
+        }
+
+        .debt-con h2 {
+            color: var(--secondary);
+            text-shadow: 0 0 10px var(--secondary);
+            font-family: 'Copperplate', sans-serif;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        #debtAmount {
+            font-size: 2em;
+            color: #FF0008;
+            margin-top: 10px;
+            font-family: 'BinnerDi', monospace;
+            text-shadow: 0 0 10px #FF0008;
+        }
+
+        footer {
+            background: linear-gradient(to right, #222, #333, #222);
+            color: var(--secondary);
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 1em;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+        }
+
+        .main-page-link {
+            color: var(--secondary);
+            text-shadow: 0 0 10px var(--secondary);
+            font-family: 'Copperplate', sans-serif;
+            font-size: 1.2em;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 5px;
+        }
+
+        .main-page-link:hover {
+            color: var(--light);
+            text-shadow: 0 0 15px var(--light);
+            transform: translateY(-2px);
+        }
+
+        #mp {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 2000;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #mp h2 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--secondary);
+            font-family: 'BinnerDi', sans-serif;
+            text-shadow: 0 0 15px var(--secondary);
+            animation: pulse 2s infinite;
+        }
+
+        #mp p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            text-align: center;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        #mp button {
+            background: linear-gradient(to bottom, var(--accent), #e67e22);
+            color: white;
+            font-size: 1.2em;
+            padding: 15px 40px;
+            border: none;
+            cursor: pointer;
+            margin: 20px 0;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #mp button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        #mp input {
+            padding: 15px;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            border: 3px solid var(--accent);
+            border-radius: 50px;
+            text-align: center;
+            color: #000;
+            max-width: 400px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s;
+        }
+
+        #mp input:focus {
+            outline: none;
+            box-shadow: 0 0 15px var(--accent);
+            transform: scale(1.02);
+        }
+
+        #error-message {
+            color: #e74c3c;
+            display: none;
+            font-size: 1.2em;
+            margin-top: 15px;
+            text-shadow: 0 0 5px #e74c3c;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .win-animation {
+            animation: win 1s ease-out;
+        }
+
+        @keyframes win {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .coins {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle at 30% 30%, #FFD700, #D4AF37);
+            border-radius: 50%;
+            animation: fall linear forwards;
+            z-index: -2;
+            top: -50px;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(calc(100vh + 50px)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8em;
+                margin: 15px 0;
+            }
+            
+            .con {
+                padding: 10px;
+            }
+            
+            .gcon {
+                padding: 20px 15px;
+                margin-bottom: 20px;
+                max-width: 95%;
+            }
+            
+            .balance {
+                font-size: 1.4em;
+                margin-bottom: 20px;
+                padding: 8px 15px;
+            }
+            
+            .slot-machine {
+                margin: 20px 0;
+                gap: 10px;
+            }
+            
+            .slot {
+                width: 80px;
+                height: 80px;
+                font-size: 2.8em;
+            }
+            
+            .spin-btn {
+                padding: 12px 30px;
+                font-size: 1.1em;
+                margin-top: 15px;
+            }
+            
+            .debt-con {
+                padding: 15px;
+                margin-bottom: 15px;
+                max-width: 90%;
+            }
+            
+            .debt-con h2 {
+                font-size: 1.3em;
+            }
+            
+            #debtAmount {
+                font-size: 1.6em;
+            }
+            
+            #mp {
+                padding: 15px;
+            }
+            
+            #mp h2 {
+                font-size: 1.8em;
+                margin-bottom: 15px;
+            }
+            
+            #mp p {
+                font-size: 1em;
+                margin-bottom: 20px;
+                max-width: 90%;
+            }
+            
+            #mp input {
+                font-size: 1.2em;
+                padding: 12px;
+                margin-bottom: 15px;
+                max-width: 90%;
+            }
+            
+            #mp button {
+                font-size: 1em;
+                padding: 12px 30px;
+                margin: 15px 0;
+            }
+            
+            footer {
+                padding: 10px 0;
+                font-size: 0.9em;
+            }
+            
+            .main-page-link {
+                font-size: 1em;
+                padding: 5px 10px;
+            }
+            
+            .coins {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 5em;
+            }
+            
+            .slot {
+                width: 65px;
+                height: 65px;
+                font-size: 2.2em;
+            }
+            
+            .balance {
+                font-size: 1.2em;
+            }
+            
+            .spin-btn {
+                padding: 10px 25px;
+                font-size: 1em;
+            }
+            
+            #mp h2 {
+                font-size: 1.5em;
+            }
+            
+            #mp p {
+                font-size: 0.9em;
+            }
+            
+            .coins {
+                width: 15px;
+                height: 15px;
+            }
+        }
+
+        @media (max-height: 500px) and (orientation: landscape) {
+            .con {
+                padding: 5px;
+            }
+            
+            h1 {
+                font-size: 2em;
+                margin: 10px 0;
+            }
+            
+            .gcon {
+                padding: 15px 10px;
+                margin-bottom: 10px;
+            }
+            
+            .balance {
+                font-size: 1.1em;
+                margin-bottom: 10px;
+                padding: 5px 10px;
+            }
+            
+            .slot-machine {
+                margin: 10px 0;
+            }
+            
+            .slot {
+                width: 60px;
+                height: 60px;
+                font-size: 2em;
+            }
+            
+            .spin-btn {
+                padding: 8px 20px;
+                font-size: 0.9em;
+                margin-top: 10px;
+            }
+            
+            .debt-con {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            
+            footer {
+                padding: 5px 0;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mp">
+        <h2>ПОДТВЕРДИТЕ ЧТО ВАМ МИНИМУМ ЛЕТ 12</h2>
+        <p>Напишите "Мне есть 12 лет" на языке восточнославянской группы, славянской ветви индоевропейской языковой семьи. Который является одним из наиболее распространённым языком мира Восьмым среди всех языков мира по общей численности говорящих и седьмым по численности владеющих им как родным. Число владеющих языком в России составляет 137,5 млн человек. Всего в мире на языке говорят 258,2 млн человек.</p>
+        <input type="text" id="ageInput" placeholder="Ввод">
+        <span id="error-message">Неверно! Попробуйте снова.</span>
+        <button onclick="checkAge()">Подтвердить</button>
+    </div>
+
+    <div class="con">
+        <h1 class="pulse">КАЗИНО</h1>
+        <div class="gcon">
+            <div class="balance">Баланс: <span id="balance">100</span> тысяч</div>
+            <div class="slot-machine">
+                <div class="slot" id="slot1">7</div>
+                <div class="slot" id="slot2">7</div>
+                <div class="slot" id="slot3">7</div>
+            </div>
+            <button class="spin-btn" onclick="spin()">Крутить <i class="fas fa-dice"></i></button>
+        </div>
+
+        <div class="debt-con">
+            <h2>Ваш долг</h2>
+            <div id="debtAmount">0</div>
+        </div>
+        
+        <div class="debt-con">
+            <h2>Самый большой долг</h2>
+            <div>92836291833880 - Рома</div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="index.html" target="_blank" class="main-page-link"><h2>ГЛАВНАЯ СТРАНИЦА <i class="fas fa-home"></i></h2></a>
+    </footer>
+
+    <script>
+        let balance = parseInt(localStorage.getItem("balance")) || 100;
+        let debt = parseInt(localStorage.getItem("debt")) || 0;
+
+        // Инициализация значений при загрузке
+        document.getElementById("balance").textContent = balance;
+        document.getElementById("debtAmount").textContent = `${debt} тысяч`;
+
+        function createCoins() {
+            const coinsCount = 15;
+            for (let i = 0; i < coinsCount; i++) {
+                const coin = document.createElement('div');
+                coin.classList.add('coins');
+                coin.style.left = `${Math.random() * 100}vw`;
+                coin.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                coin.style.width = `${Math.random() * 20 + 10}px`;
+                coin.style.height = coin.style.width;
+                document.body.appendChild(coin);
+                
+                setTimeout(() => {
+                    coin.remove();
+                }, 5000);
+            }
+        }
+
+        setTimeout(createCoins, 1000);
+        setInterval(createCoins, 8000);
+
+        function spin() {
+            const slots = [
+                document.getElementById("slot1"),
+                document.getElementById("slot2"),
+                document.getElementById("slot3")
+            ];
+            const balanceElement = document.getElementById("balance");
+            const debtElement = document.getElementById("debtAmount");
+            const spinBtn = document.querySelector('.spin-btn');
+
+            spinBtn.disabled = false;
+            spinBtn.textContent = "Крутим...";
+
+            slots.forEach(slot => {
+                slot.classList.add('rolling');
+            });
+
+            let interval = setInterval(() => {
+                slots.forEach(slot => {
+                    slot.textContent = Math.floor(Math.random() * 10);
+                    slot.classList.add('rolling');
+                });
+            }, 100);
+
+            setTimeout(() => {
+                clearInterval(interval);
+                
+                let slotValues;
+                do {
+                    slotValues = [
+                        Math.floor(Math.random() * 10),
+                        Math.floor(Math.random() * 10),
+                        Math.floor(Math.random() * 10)
+                    ];
+                } while (slotValues[0] === slotValues[1] && slotValues[1] === slotValues[2]);
+
+
+                slots.forEach((slot, index) => {
+                    slot.textContent = slotValues[index];
+                    slot.classList.remove('rolling');
+                    
+                    setTimeout(() => {
+                        slot.classList.add('win-animation');
+                        setTimeout(() => {
+                            slot.classList.remove('win-animation');
+                        }, 1000);
+                    }, index * 200);
+                });
+
+                balance -= 10;
+                if (balance < 0) {
+                    debt = Math.abs(balance);
+                    localStorage.setItem("debt", debt);
+                }
+
+                localStorage.setItem("balance", balance);
+                balanceElement.textContent = balance;
+                debtElement.textContent = `${debt} тысяч`;
+
+                spinBtn.disabled = false;
+                spinBtn.textContent = "Крутить еще";
+            }, 1500);
+        }
+
+        function checkAge() {
+            const ageInput = document.getElementById('ageInput').value.trim().toLowerCase();
+            const errorMessage = document.getElementById('error-message');
+
+            if (["мне есть 12 лет"].includes(ageInput)) {
+                document.getElementById('mp').style.display = 'none';
+                createCoins();
+            } else {
+                errorMessage.style.display = 'block';
+                const input = document.getElementById('ageInput');
+                input.style.animation = 'shake 0.5s';
+                setTimeout(() => input.style.animation = '', 500);
+            }
+        }
+
+        document.getElementById('ageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkAge();
+            }
+        });
+    </script>
+</body>
+</html>
