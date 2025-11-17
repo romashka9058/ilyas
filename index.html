@@ -88,7 +88,7 @@
       }
       50% {
         transform: translate(-15px, 70px) rotate(-5deg);
-        opacity: 0.1;
+        opacity: 0.1;#ff1f00
       }
       75% {
         transform: translate(30px, 30px) rotate(3deg);
@@ -132,7 +132,7 @@
     .container.darker {
       background-color: rgba(25, 25, 25, 0.85);
       padding: (0.1rem, 20vw, 40rem);
-      width: 101%;
+      width: 100%;
       bottom: 20px;
     }
     
@@ -204,9 +204,9 @@
     .gallery-item {
       width: 100%;
       max-width: clamp(0.1rem, 100vw, 50rem);
-      height: 40vw;
+      height: clamp(0.1rem, 80vw, 40rem); 
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: clamp(0.1rem, 5vw, 50rem);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
       transition: all 0.3s ease;
       cursor: pointer;
@@ -277,8 +277,8 @@
 
     .music-control {
       position: fixed;
-      bottom: clamp(0.01rem, 2vw, 3rem);
-      right: clamp(0.01rem, 2vw, 3rem);
+      bottom: clamp(0.01rem, 4.25vw, 3rem);
+      right: clamp(0.01rem, 4.25vw, 3rem);
       z-index: 100;
       background: rgba(47, 47, 47, 0.8);
       padding: clamp(0.1rem, 2vw, 1.5rem) clamp(0.1rem, 2vw, 1.5rem);
@@ -352,8 +352,8 @@
     <section>
       <div class="container">
         <h2>История Ильяса</h2>
-        <p>Ильяс – человек, чья жизнь и работа тесно связаны с африканским наследием. Родившись в семье, которая хранила традиции своих предков,  он с детства впитывал культурные ценности Африки.</p>
-        <p>Вдохновленный великими африканскими лидерами, такими как Нельсон Мандела и Томас Санкара, Ильяс посвятил свою жизнь продвижению африканской культуры.</p>
+        <p>Ильяс – человек, чья жизнь и работа тесно связаны с африканским наследием. Родившись в семье, которая хранила традиции своих предков,  он с детства впитывал культурные ценности Африки</p>
+        <p>Вдохновленный великими африканскими лидерами, такими как Нельсон Мандела и Томас Санкара, Ильяс посвятил свою жизнь продвижению африканской культуры</p>
         <div class="image-grid">
           <img src="p/p1.jpg" class="gallery-item">
           <img src="p/p2.jpg" class="gallery-item">
@@ -366,7 +366,7 @@
     <section>
       <div class="container">
         <h2>Родина</h2>
-        <p>Африка – это колыбель цивилизации. Именно здесь родились древние империи – Мали, Гана, Сонгай, Куш. Эти великие царства оставили после себя бесценное наследие.</p>
+        <p>Африка – это колыбель цивилизации. Именно здесь родились древние империи – Мали, Гана, Сонгай, Куш. Эти великие царства оставили после себя бесценное наследие</p>
       </div>
     </section>
     
@@ -400,7 +400,7 @@
     <section>
       <div class="container">
         <h2>Спасибо за помощь</h2>
-        <p>Ильяс был успешным игроком в онлайн-казино, зарабатывая миллионы на ставках он решил помочь бедным регионам Африки, но эти миллионы были с минусом в начале.</p>
+        <p>Ильяс успешный игрок в онлайн-казино, зарабатывая миллионы на ставках он помогает бедным регионам Африки, но эти миллионы с минусом в начале</p>
         <div class="image-grid large">
           <img src="p/p5.jpg" class="gallery-item large">
         </div>
@@ -436,7 +436,6 @@
       
       let isMusicPlaying = false;
 
-      // Создание африканских орнаментов
       function createAfricanOrnaments() {
         const ornamentCount = 5;
         const ornamentTypes = ['ornament-1', 'ornament-2', 'ornament-3'];
@@ -454,7 +453,6 @@
         }
       }
 
-      // Создание частиц земли
       function createDirtParticles() {
         const particleCount = 8;
         const africaBg = document.getElementById('africa-bg');
@@ -469,8 +467,7 @@
             particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
             particle.style.opacity = Math.random() * 1 + 0.3;
             africaBg.appendChild(particle);
-            
-            // Удаление частиц после анимации
+           
             setTimeout(() => {
               if (particle.parentNode) {
                 particle.parentNode.removeChild(particle);
@@ -504,7 +501,6 @@
         document.body.style.overflow = '';
       }
 
-      // Инициализация
       createAfricanOrnaments();
       createDirtParticles();
       setInterval(createDirtParticles, 500);
@@ -528,4 +524,4 @@
     });
   </script>
 </body>
-</html> 
+</html>
