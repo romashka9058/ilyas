@@ -6,10 +6,11 @@
     <title>КАЗИНО</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+     
         
         @font-face {
             font-family: 'BinnerDi';
-            src: url('font/ofont.ru_BinnerDi_1.woff') format('truetype');
+            src: url('font/BuyanBold.ttf') format('truetype');
             font-display: swap;
         }
 
@@ -73,8 +74,8 @@
 
         h1 {
             color: var(--primary);
-            font-size: clamp(0.01rem, 20vw, 10rem);
-            margin: 20px 0;
+            font-size: clamp(0.01rem, 22.5vw, 10rem);
+            margin: clamp(0.01rem, 1vw, 3rem) clamp(0.01rem, 1vw, 3rem);
             text-shadow: var(--glow);
             text-align: center;
             position: relative;
@@ -99,20 +100,20 @@
 
         .gcon {
             background: rgba(0, 0, 0, 0.85);
-            padding: 15px;
-            border-radius: 20px;
+            border-radius: clamp(0.1rem, 3vw, 1rem);
             box-shadow: var(--shadow), var(--glow);
-            margin-bottom: 10px;
+            margin-bottom: clamp(0.1rem, 5vw, 3rem);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: clamp(0.1rem, 70vw, 71vw);
-            max-width: 1200px;
+            width: clamp(0.1rem, 70vw, 70vw);
+            max-width: clamp(0.1rem, 90vw, 150rem);
             border: 2px solid var(--secondary);
             position: relative;
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
+            padding: clamp(0.1rem, 2vw, 1rem);
         }
 
         .gcon:hover {
@@ -141,12 +142,12 @@
 
         .balance {
             font-size: clamp(0.1rem, 5vw, 4rem);
-            margin-bottom: 25px;
+            margin-bottom: clamp(0.1rem, 2vw, 1rem);
             color: var(--light);
             text-align: center;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            padding: clamp(0.1rem, 4vw, 1rem) 0;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: clamp(0.1rem, 1vw, 1rem);
             width: 100%;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
@@ -162,16 +163,16 @@
             display: flex;
             justify-content: space-around;
             width: clamp(0.1rem, 40vw, 40vw);
-            gap: 4px;
+            gap: clamp(0.1rem, 1vw, 1rem);
             perspective: 1000px;
         }
 
         .slot {
-            font-size: clamp(0.1rem, 10vw, 10rem);
-            width: clamp(0.1rem, 15vw, 15vw);
+            font-size: clamp(0.1rem, 10vw, 30rem);
+            width: clamp(0.1rem, 15vw, 14vw);
             height: clamp(0.1rem, 20vw, 20vw);
             background: linear-gradient(145deg, #333, #222);
-            border-radius: 20px;
+            border-radius: clamp(0.1rem, 4vw, 2rem);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -214,14 +215,14 @@
         }
 
         .spin-btn {
-            padding: clamp(0.1rem, 3vw, 1rem) clamp(0.1rem, 7vw, 2rem);
+            padding: clamp(0.1rem, 1vw, 1rem) clamp(0.1rem, 10vw, 4rem);
             background: linear-gradient(to bottom, var(--primary), #c0392b);
             color: white;
             border: none;
-            border-radius: 50px;
+            border-radius: clamp(0.1rem, 5vw, 3rem);
             cursor: pointer;
             font-size: clamp(0.1rem, 7vw, 4rem);
-            margin-top: 10px;
+            margin-top: clamp(0.1rem, 2vw, 1rem);
             font-family: 'Copperplate', monospace;
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -271,13 +272,13 @@
 
         .debt-con {
             background: rgba(255, 215, 0, 0.15);
-            padding: 8px;
-            border-radius: 15px;
+            padding: clamp(0.1rem, 1vw, 2rem);
+            border-radius: clamp(0.1rem, 3vw, 1rem);
             max-width: clamp(0.1rem, 60vw, 50rem);
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
             text-align: center;
-            margin-bottom: clamp(0.1rem, 4vw, 1rem);
-            width: 100%;
+            margin-bottom: clamp(0.1rem, 2vw, 2rem);
+            width: clamp(0.1rem, 70vw, 50rem);
             border: 1px solid rgba(255, 215, 0, 0.3);
             transition: transform 0.3s;
         }
@@ -294,6 +295,11 @@
             font-size: clamp(0.1rem, 6vw, 4rem);
         }
 
+        .debt-con p {
+            margin-bottom: 5px;
+            font-size: clamp(0.1rem, 3vw, 4rem);
+        }
+
         #debtAmount {
             font-size: clamp(0.1rem, 8vw, 3rem);
             color: #FF0008;
@@ -305,11 +311,11 @@
             background: linear-gradient(to right, #222, #333, #222);
             color: var(--secondary);
             text-align: center;
-            padding: clamp(0.1rem, 3vw, 2rem) clamp(0.1rem, 3vw, 2rem);
+            padding: clamp(0.1rem, 3vw, 0rem) clamp(0.1rem, 3vw, 2rem);
             position: fixed;
-            bottom: -5px;
+            bottom: 0px;
             width: 100%;
-            font-size: clamp(0.1rem, 3vw, 2rem);
+            font-size: clamp(0.1rem, 5vw, 2rem);
             box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
             z-index: 100;
         }
@@ -442,6 +448,7 @@
                 opacity: 0;
             }
         }
+    
     </style>
 </head>
 
@@ -505,7 +512,7 @@
             }
         }
 
-        setTimeout(createCoins, 1000);
+        setTimeout(createCoins, 500);
         setInterval(createCoins, 8000);
 
         function spin() {
