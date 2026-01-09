@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
+  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ильяс – Наследие Африки</title>
@@ -15,12 +15,7 @@
     }
 
     :root {
-      --bg-dark: #2f2f2f;
-      --bg-darker: #191919;
       --accent: #d2691e;
-      --accent-hover: #cd853f;
-      --text: #fff;
-      --text-light: #ddd;
     }
 
     * {
@@ -28,200 +23,102 @@
       box-sizing: border-box;
     }
     
-    body {
-      font-family: 'BinnerDi', Arial, sans-serif;
-      background-color: #3f3f3f;
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+html, body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
     
-    .african-ornament {
-      position: fixed;
-      opacity: 0.1;
-      animation: float 20s infinite ease-in-out;
-      z-index: -1;
-      pointer-events: none;
-    }
+body{
+  font-family:'BinnerDi',Arial,sans-serif;
+  color:#fff;
+  position:relative;
+  background:#3f3f3f;
+  text-align: center; 
+}
 
-    .ornament-1 {
-      width: 40px;
-      height: 40px;
-      background: 
-        radial-gradient(circle at 30% 30%, #d2691e 0%, transparent 50%),
-        radial-gradient(circle at 70% 70%, #c2b280 0%, transparent 50%);
-      border-radius: 50%;
-    }
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  opacity:.5;
+  background:url("1.svg") repeat;
+  background-size:auto 50vmin;
+  pointer-events:none;
+  z-index:-10;
+}
 
-    .ornament-2 {
-      width: 30px;
-      height: 30px;
-      background: conic-gradient(#d2691e, #654321, #c2b280, #d2691e);
-      clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-    }
-
-    .ornament-3 {
-      width: 35px;
-      height: 35px;
-      background: 
-        repeating-linear-gradient(45deg, #d2691e, #d2691e 5px, #654321 5px, #654321 10px);
-      border-radius: 8px;
-    }
-
-    .dirt-particle {
-      position: fixed;
-      background-color: #654321;
-      border-radius: 50%;
-      animation: dirt-fall linear forwards;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translate(0, 0) rotate(0deg);
-        opacity: 0.1;
-      }
-      25% {
-        transform: translate(20px, 40px) rotate(5deg);
-        opacity: 0.15;
-      }
-      50% {
-        transform: translate(-15px, 70px) rotate(-5deg);
-        opacity: 0.1;#ff1f00
-      }
-      75% {
-        transform: translate(30px, 30px) rotate(3deg);
-        opacity: 0.15;
-      }
-    }
-
-    @keyframes dirt-fall {
-      to {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    .africa-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -2;
-      background: linear-gradient(to bottom, #2f2f2f, #654321, #2f2f2f);
-      opacity: 0.7;
-    }
-    
     .container {
-      background-color: rgba(47, 47, 47, 0.85);
-      width: 95%;
-      max-width: 1200px;
-      padding: clamp(0.1rem, 5vw, 3rem);
-      border-radius: clamp(0.1rem, 4vw, 1rem);
-      margin: 0 auto 0px;
+      background-color: rgba(47, 47, 47, 0.95);
+      width: 90%;
+      max-width: 1100px;
+      padding: min(5vmin, 3rem);
+      border-radius: min(4vmin, 1rem);
+      margin: 0 auto 0;
       line-height: 0.8;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(139, 69, 19, 0.3);
+      box-shadow: 0 9px 30px rgba(0, 0, 0, 0.5);
+      border: .2vmin solid rgba(139, 89, 0, 1);
       position: relative;
-      z-index: 1;
+      z-index:1;
     }
     
     .container.darker {
-      background-color: rgba(25, 25, 25, 0.85);
-      padding: (0.1rem, 20vw, 40rem);
+      background-color: rgba(25, 25, 25, 1);
+      padding: min(10vmin, 5rem);
       width: 100%;
-      bottom: 20px;
-    }
-    
-    header {
-      color: var(--text);
-      text-align: center;
+      bottom: 4vmin;
+      max-width: none;
     }
 
     h1 {
       font-family: 'africa', sans-serif;
-      font-size: clamp(0.1rem, 20vw, 7rem);
-      margin-top: 15px;
+      font-size: min(20vmin, 14rem);
       color: var(--accent);
-      line-height: 0.9;
       text-shadow: 0 0 10px rgba(210, 105, 30, 0.5);
-      margin-bottom: 10px;
     }
     
     .subtitle {
-      font-size: clamp(0.1rem, 4vw, 2rem);
+      font-size: min(7vmin, 2rem);
       font-style: italic;
-      color: var(--text-light);
-      margin-top: 5px;
+      color: #ddd;
     }
 
     section {
-      padding: 10px 0;
-      text-align: center;
+      padding: 2vmin 0;
       position: relative;
       
     }
 
     h2 {
       font-family: 'africa', sans-serif;
-      color: var(--accent-hover);
-      line-height: 0.8; 
-      margin-bottom: 5px;
-      font-size: clamp(0.1rem, 13vw, 4.5rem);
-      text-shadow: 0 0 5px rgba(210, 105, 30, 0.3);
+      color: #cd853f;
+      font-size: min(13vmin, 6.5rem);
     }
     
     section p {
       max-width: 800px;
-      margin: 15px auto;
-      text-align: center;
-      padding: 0 10px;
-      font-size: clamp(0.1rem, 6vw, 2rem);
-    }
-
-    .image-grid {
-      display: rid;
-      gap: 10px;
-      margin: clamp(0.1rem, 4vw, 2rem) auto;
-      padding: 0 10px;
-      justify-items: center;
-    }
-
-    .evolution-item {
-      margin-bottom: clamp(0.1rem, 1vw, 6rem);
+      margin: min(5vmin, 2rem) auto;
+      font-size: min(6vmin, 2rem);
     }
 
     .evolution-item h3 {
-      font-size: clamp(0.1rem, 6vw, 2rem);
-      color: #fff;
-      margin: clamp(0.1rem, 4vw, 1rem) 0;
-      line-height: 0.8;
+      font-size: min(8vmin, 3rem);
+      margin: min(2vmin, 2rem) 0 0;
     }
 
-    .gallery-item {
-      width: 100%;
-      max-width: clamp(0.1rem, 37vw, 36rem);
-      height: clamp(0.1rem, 40vw, 30rem); 
-      object-fit: cover;
-      border-radius: clamp(0.1rem, 3vw, 2rem);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-      transition: all 0.3s ease;
-      cursor: pointer;
-      border: 2px solid transparent;
-      filter: sepia(0.3) brightness(0.9);
+    .gallery-item, .gallery-item1 {
+      max-width: min(46vmin, 33rem);
+      height: min(35vmin, 29rem); 
+      border-radius: min(3vmin, 2rem);
+      border: 4px solid transparent;
     }
-    
-    .gallery-item.large {
-      max-width: 700px;
-      height: auto;
-      max-height: 600px;
+
+    .gallery-item1 {
+      width: min(55vmin, 30rem); 
+      height: min(40vmin, 30rem);
+      max-width: none;
     }
    
-    .gallery-item:hover {
-      transform: scale(1.03);
+    .gallery-item:hover, .gallery-item1:hover {
       box-shadow: 0 8px 20px rgba(210, 105, 30, 0.4);
       border-color: var(--accent);
     }
@@ -240,109 +137,85 @@
     }
 
     .modal-content {
-      max-width: clamp(0.1rem, 85vw, 55rem);
-      max-height: clamp(0.1rem, 55vw, 35rem);
-      border-radius: 10px;
+      max-width: min(85vmin, 55rem);
+      max-height: min(55vmin, 35rem);
+      border-radius: 4vmin;
       object-fit: contain;
       box-shadow: 0 0 30px rgba(210, 105, 30, 0.5);
     }
     
     .close {
       position: absolute;
-      top: 20px;
-      right: 30px;
+      top: 5vmin;
+      right: 7.5vmin;
       color: var(--accent);
-      font-size: 40px;
-      font-weight: bold;
-      cursor: pointer;
-      text-shadow: 0 0 10px rgba(0,0,0,0.5);
-      transition: all 0.3s;
+      font-size: 7vmin;
     }
 
     .close:hover {
-      transform: scale(1.1);
-      color: var(--accent-hover);
+      color: #cd853f;
     }
 
     footer {
-      background-color: #222;
-      color: var(--text);
-      text-align: center;
-      padding: clamp(0.1rem, 4vw, 1rem) 0;
+      background-color: rgba(30, 30, 30, .95);
+      padding: min(4vmin, 1rem) 0;
       width: 100%;
-      margin-top: 0;
-      position: relative;
-      z-index: 1;
-      font-size: clamp(0.01rem, 5vw, 2rem);
+      font-size: min(5vmin, 2rem);
     }
 
     .music-control {
       position: fixed;
-      bottom: clamp(0.01px, 12vw, 2rem);
-      right: clamp(0.01px, 2.25vw, 3rem);
+      bottom: min(12vmin, 2rem);
+      right: min(2.25vmin, 3rem);
       z-index: 100;
-      background: rgba(47, 47, 47, 0.8);
-      padding: clamp(0.01rem, 0.5vw, 1rem) clamp(0.01rem, 0.5vw, 1rem);
-      border-radius: clamp(0.1rem, 2vw, 1rem);
+      border-radius: min(2vmin, 2rem);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(210, 105, 30, 0.3);
     }
     
     .music-control button {
       font-family: 'BinnerDi', Arial, sans-serif; 
       background: linear-gradient(45deg, var(--accent), #654321);
       color: white;
-      border: none;
-      padding: clamp(0.01rem, 1vw, 2rem) clamp(0.01rem, 1vw, 2rem);
-      border-radius: clamp(0.1rem, 2vw, 1rem);
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: clamp(0.1rem, 5vw, 1rem);
+      padding: min(2vmin, 2rem);
+      border-radius: min(3vmin, 1rem);
+      font-size: min(5vmin, 2rem);
     }
     
     .music-control button:hover {
       background: linear-gradient(45deg, #654321, var(--accent));
-      transform: scale(1);
     }
 
     a {
-      color: var(--accent);
       text-decoration: none;
-      transition: color 0.3s;
-      font-size: clamp(0.1rem, 4vw, 3rem);
-    }
-
-    a:hover {
-      color: var(--accent-hover);
-      text-decoration: underline;
+      font-size: min(15vw, 6rem);
     }
     
     .casino-link {
       display: inline-block;
-      padding: clamp(0.1rem, 3vw, 2rem) clamp(0.1rem, 10vw, 2rem);
+      padding: min(1vmin, 3rem) min(9vmin, 7rem) min(2vmin, 3rem);
       color: #fff;
       background: linear-gradient(45deg, var(--accent), #654321);
-      border-radius: 5px;
-      transition: all 0.3s;
+      border-radius: 2vmin;
     }
     
     .casino-link:hover {
-      transform: scale(1.05);
       box-shadow: 0 5px 15px rgba(210, 105, 30, 0.4);
     }
+
+::-webkit-scrollbar { width: 0; height: 0; }
+html { scrollbar-width: none; }
+body { -ms-overflow-style: none; }
+button, div { -webkit-tap-highlight-color: transparent; background-color: none; }
+*{scroll-behavior:smooth;}
   </style>
 </head>
 <body>
-  
-  <div class="africa-bg" id="africa-bg"></div>
-  <div id="african-ornaments"></div>
-  
   <header>
     <div class="container darker">
       <h1>ильяс</h1>
       <p class="subtitle">Лидер, вдохновитель, наследник Африки</p>
     </div>
-    <audio id="bg-music" loop preload="auto">
+    <audio id="bg-music" loop="" preload="auto">
       <source src="2.mp3" type="audio/mp3">
     </audio>
   </header>
@@ -358,10 +231,10 @@
         <p>ильяс – человек, чья жизнь и работа тесно связаны с африканским наследием. родившись в семье, которая хранила традиции своих предков,  он с детства впитывал культурные ценности Африки</p>
         <p>Вдохновленный великими африканскими лидерами, такими как Нельсон Мандела и Томас Санкара, ильяс посвятил свою жизнь продвижению африканской культуры</p>
         <div class="image-grid">
-          <img src="p/p1.jpg" class="gallery-item">
-          <img src="p/p2.jpg" class="gallery-item">
-          <img src="p/p3.jpg" class="gallery-item">
-          <img src="p/p4.jpg" class="gallery-item">
+          <img class="gallery-item" src="p/1.jpg"><img class="gallery-item" src="p/2.jpg">
+        </div>
+        <div class="image-grid">
+          <img class="gallery-item" src="p/4.jpg"><img class="gallery-item" src="p/3.jpg">
         </div>
       </div>
     </section>
@@ -380,21 +253,21 @@
         <div class="evolution-item">
           <h3>из мелкого работяги</h3>
           <div class="image-grid large">
-            <img src="p/p6.jpg" class="gallery-item">
+            <img src="p/6.jpg" class="gallery-item1">
           </div>
         </div>
         
         <div class="evolution-item">
           <h3>в машину</h3>
           <div class="image-grid large">
-            <img src="p/p7.jpg" class="gallery-item">
+            <img src="p/7.jpg" class="gallery-item1">
           </div>
         </div>
         
         <div class="evolution-item">
           <h3>а из машины в это</h3>
           <div class="image-grid large">
-            <img src="p/p8.jpg" class="gallery-item">
+            <img src="p/8.jpg" class="gallery-item1">
           </div>
         </div>
       </div>
@@ -405,7 +278,7 @@
         <h2>Спасибо за помощь</h2>
         <p>ильяс успешный игрок в онлайн-казино, зарабатывая миллионы на ставках он помогает бедным регионам Африки, но эти миллионы с минусом в начале</p>
         <div class="image-grid large">
-          <img src="p/p5.jpg" class="gallery-item large">
+          <img src="p/5.jpg" class="gallery-item1">
         </div>
       </div>
     </section>
@@ -414,15 +287,10 @@
       <div class="container">
         <h2>работа</h2>
         <p>Воттут ильяс и зарабатывает</p>
-        <a href="hshs.html" target="_blank" class="casino-link">Перейти в казино</a>
+        <a href="hshs.html" target="_blank" class="casino-link">додеп</a>
       </div>    
     </section>
   </main>
-
-  <div id="modal" class="modal">
-    <span class="close">X</span>
-    <img class="modal-content" id="modalImage">
-  </div>
 
   <footer>
     <p>С первым апреля</p>
@@ -431,55 +299,8 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const bgMusic = document.getElementById('bg-music');
-      const modal = document.getElementById('modal');
-      const modalImage = document.getElementById('modalImage');
-      const closeBtn = document.querySelector('.close');
-      const galleryItems = document.querySelectorAll('.gallery-item');
       const musicToggle = document.getElementById('music-toggle');
-      
       let isMusicPlaying = false;
-
-      function createAfricanOrnaments() {
-        const ornamentCount = 5;
-        const ornamentTypes = ['ornament-1', 'ornament-2', 'ornament-3'];
-        const ornamentsContainer = document.getElementById('african-ornaments');
-        
-        for (let i = 0; i < ornamentCount; i++) {
-          const ornament = document.createElement('div');
-          const type = ornamentTypes[Math.floor(Math.random() * ornamentTypes.length)];
-          ornament.classList.add('african-ornament', type);
-          ornament.style.left = Math.random() * 90 + 5 + 'vw';
-          ornament.style.top = Math.random() * 90 + 5 + 'vh';
-          ornament.style.animationDelay = Math.random() * 5 + 's';
-          ornament.style.animationDuration = (Math.random() * 10 + 20) + 's';
-          ornamentsContainer.appendChild(ornament);
-        }
-      }
-
-      function createDirtParticles() {
-        const particleCount = 8;
-        const africaBg = document.getElementById('africa-bg');
-        
-        for (let i = 0; i < particleCount; i++) {
-          setTimeout(() => {
-            const particle = document.createElement('div');
-            particle.classList.add('dirt-particle');
-            particle.style.left = Math.random() * 100 + 'vw';
-            particle.style.width = (Math.random() * 10 + 5) + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
-            particle.style.opacity = Math.random() * 1 + 0.3;
-            africaBg.appendChild(particle);
-           
-            setTimeout(() => {
-              if (particle.parentNode) {
-                particle.parentNode.removeChild(particle);
-              }
-            }, 16000);
-          }, i * 1200);
-        }
-      }
-
       function toggleMusic() {
         if (isMusicPlaying) {
           bgMusic.pause();
@@ -492,38 +313,7 @@
         }
         isMusicPlaying = !isMusicPlaying;
       }
-
-      function openModal(e) {
-        modalImage.src = e.target.src;
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-      }
-
-      createAfricanOrnaments();
-      createDirtParticles();
-      setInterval(createDirtParticles, 500);
-
       musicToggle.addEventListener('click', toggleMusic);
-      closeBtn.addEventListener('click', closeModal);
-      
-      galleryItems.forEach(item => {
-        item.addEventListener('click', openModal);
-      });
-
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.style.display === 'flex') {
-          closeModal();
-        }
-      });
     });
   </script>
 </body>
