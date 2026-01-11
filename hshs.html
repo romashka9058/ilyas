@@ -31,7 +31,7 @@ button, div { -webkit-tap-highlight-color: transparent;}
 
 body {
   font-family: 'Copperplate', sans-serif;
-  background: linear-gradient(135deg, #220f0f 0%, #261107 100%);
+  background: linear-gradient(135deg, #2B0F07, #220F09);
   color: white;
   display: flex;
   flex-direction: column;
@@ -47,6 +47,7 @@ body::before {
   position: absolute;
   inset: 0;
   background: url("wood.png");
+  background-size: 75vmin;
   z-index: -1;
 }
 
@@ -237,19 +238,6 @@ h1 {
   font-size: min(5vmin, 2.5rem);
 }
 
-footer {
-  text-align: center;
-  padding: min(4vmin, 1rem);
-  position: fixed;
-  bottom: 0;
-}
-
-.main-page {
-  color: #FFB035;
-  font-size: min(3vmin, 1.5rem);
-  display: inline-block;
-}
-
 #mp {
   position: fixed;
   inset: 0;
@@ -336,11 +324,7 @@ footer {
             <p>92836291833880 - Рома</p>
         </div>
     </div>
-
-    <footer>
-        <a href="index.html" target="_blank" class="main-page"><h2>ГЛАВНАЯ СТРАНИЦА</h2></a>
-    </footer>
-
+    
 <script>
     const $=id=>document.getElementById(id)
     const slots=[$('slot1'),$('slot2'),$('slot3')]
