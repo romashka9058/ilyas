@@ -237,75 +237,10 @@ h1 {
 .debt-con p {
   font-size: min(5vmin, 2.5rem);
 }
-
-#mp {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.95);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 2000;
-  padding: min(13vmin, 2rem);
-  text-align: center;
-}
-
-#mp h2 {
-  color: var(--secondary);
-  font-family: 'buyan', sans-serif;
-  text-shadow: 0 0 min(8vmin, 7rem) var(--secondary);
-  font-size: min(14vmin, 8rem);
-  margin-bottom: 2vmin;
-}
-
-#mp p {
-  font-size: min(5vmin, 3.5rem);
-  margin-bottom: 2vmin;
-  max-width: 63rem;
-  line-height: 0.7;
-}
-
-#mp button {
-  background: #f99a04;
-  color: white;
-  font-size: min(7vmin, 3rem);
-  padding: min(2vmin, 3rem) min(7vmin, 9rem);
-  margin: min(4vmin, 3rem) 0;
-  border-radius: 2vmin;
-  font-family: 'Copperplate', sans-serif;
-}
-
-#mp input {
-  font-size: min(6vmin, 4rem);
-  border-radius: 1vmin;
-  text-align: center;
-  color: #fff;
-  max-width: min(60vmin, 35rem);
-  width: 100%;
-  background: #242424;
-  font-family: 'Copperplate', sans-serif;
-  border: .2vmin solid var(--secondary);
-  margin-bottom: 1vmin;
-}
-
-#error-message {
-  color: #e74c3c;
-  display: none;
-  font-size: min(5vmin, 3rem);
-}
     </style>
 </head>
 
 <body>
-    <div id="mp">
-        <h2>скажите что вам<br>лет 12 хотябы</h2>
-        <p>Напиши "Мне есть 12 лет" на языке восточнославянской группы, славянской ветви индоевропейской языковой семьи. Который является одним из наиболее распространённым языком мира Восьмым среди всех языков мира по общей численности говорящих и седьмым по численности владеющих им как родным. Число владеющих языком в России составляет 137,5 млн человек. Всего в мире на языке говорят 258,2 млн человек.</p>
-        <input type="text" id="ageInput" placeholder="ввод">
-        <span id="error-message">не то</span>
-        <button onclick="checkAge()">подтвердить</button>
-    </div>
 
     <div class="con">
         <h1 class="pulse">КАЗИНО</h1>
@@ -362,14 +297,6 @@ h1 {
             balanceElement.classList.add('animate');
         },1500)
     }
-
-    function checkAge(){
-        const ok=$('ageInput').value.trim().toLowerCase()==='мне есть 12 лет'
-        $('error-message').style.display=ok?'none':'block'
-        $('mp').style.display=ok?'none':'flex'
-    }
-
-        $('ageInput').addEventListener('keydown',e=>e.key==='Enter'&&checkAge())
 </script>
 </body>
 </html>
