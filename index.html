@@ -3,326 +3,349 @@
   <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#D57500">
-    <meta name="description" content="Ильясова биография">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Ильяс">
-    <link rel="icon" type="image/png" href="p/8.jpg">
-    <link rel="apple-touch-icon" href="p/8.jpg">
-    <title>Биография</title>
+<meta name="theme-color" content="#D57500">
+<meta name="description" content="Ильясова биография">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ильяс">
+<link rel="icon" type="image/png" href="p/8.jpg">
+<link rel="apple-touch-icon" href="p/8.jpg">
+<title>Биография</title>
   <style> 
-    @font-face {
-      font-family: 'africa';
-      src: url('font/ST-Africa.woff') format('woff');
-    }
-    @font-face {
-      font-family: 'BinnerDi';
-      src: url('font/ofont.ru_BinnerDi_1.woff') format('woff');
-    }
+@font-face {
+  font-family: 'africa';
+  src: url('font/ST-Africa.woff') format('woff');
+}
+@font-face {
+  font-family: 'BinnerDi';
+  src: url('font/ofont.ru_BinnerDi_1.woff') format('woff');
+}
 
-    :root {
-      --accent: #d2691e;
-    }
+:root {
+  --accent: #d2691e;
+}
 
-    * {
-      margin: 0;
-      box-sizing: border-box;
-    }
-    
-    html, body {
-      overflow-x: hidden;
-      overflow-y: auto;
-    }
-    
-    body{
-      font-family:'BinnerDi',Arial,sans-serif;
-      color:#fff;
-      position:relative;
-      background:#3f3f3f;
-      text-align: center; 
-    }
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
 
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      opacity:.5;
-      background:url("1.svg") repeat;
-      background-size:auto 50vmin;
-      pointer-events:none;
-      z-index:-10;
-    }
+html, body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 
-    .container {
-      background-color: rgba(47, 47, 47, 0.95);
-      width: 90%;
-      max-width: 1100px;
-      padding: min(5vmin, 3rem);
-      border-radius: min(4vmin, 1rem);
-      margin: 0 auto 0;
-      line-height: 0.8;
-      box-shadow: 0 9px 30px rgba(0, 0, 0, 0.5);
-      border: .2vmin solid rgba(139, 89, 0, 1);
-      position: relative;
-      z-index:1;
-    }
-    
-    .container.darker {
-      background-color: rgba(25, 25, 25, 1);
-      padding: min(10vmin, 5rem);
-      width: 100%;
-      bottom: 4vmin;
-      max-width: none;
-    }
+body{
+  font-family:'BinnerDi',Arial,sans-serif;
+  color:#fff;
+  position:relative;
+  background:#3f3f3f;
+  text-align: center; 
+}
 
-    h1 {
-      font-family: 'africa', sans-serif;
-      font-size: min(20vmin, 14rem);
-      color: var(--accent);
-      text-shadow: 0 0 10px rgba(210, 105, 30, 0.5);
-    }
-    
-    .subtitle {
-      font-size: min(7vmin, 2rem);
-      font-style: italic;
-      color: #ddd;
-    }
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  opacity:.5;
+  background:url("1.svg") repeat;
+  background-size:auto 50vmin;
+  pointer-events:none;
+  z-index:-10;
+}
 
-    section {
-      padding: 2vmin 0;
-      position: relative;
-      
-    }
+.evolution-item {
+  display: inline-grid;
+}
 
-    h2 {
-      font-family: 'africa', sans-serif;
-      color: #cd853f;
-      font-size: min(13vmin, 6.5rem);
-    }
-    
-    section p {
-      max-width: 800px;
-      margin: min(5vmin, 2rem) auto;
-      font-size: min(6vmin, 2rem);
-    }
+.container {
+  background-color: rgba(47, 47, 47, 0.97);
+  width: 90%;
+  max-width: 72rem;
+  padding: min(5vmin, 3rem);
+  border-radius: min(4vmin, 1rem);
+  margin: 0 auto 0;
+  line-height: 0.8;
+  box-shadow: 0 5vmin 9vmin rgba(0, 0, 0, 0.75);
+  border: .2vmin solid rgba(139, 89, 0, 1);
+  position: relative;
+  z-index:1;
+}
 
-    .evolution-item h3 {
-      font-size: min(8vmin, 3rem);
-      margin: min(2vmin, 2rem) 0 0;
-    }
+.container.darker {
+  background-color: rgba(25, 25, 25, 1);
+  padding: min(10vmin, 5rem);
+  width: 100%;
+  bottom: 4vmin;
+  max-width: none;
+}
 
-    .gallery-item, .gallery-item1 {
-      max-width: min(46vmin, 33rem);
-      height: min(35vmin, 29rem); 
-      border-radius: min(3vmin, 2rem);
-      border: 4px solid transparent;
-    }
+h1 {
+  font-family: 'africa', sans-serif;
+  font-size: min(20vmin, 14rem);
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(210, 105, 30, 0.5);
+}
 
-    .gallery-item1 {
-      width: min(55vmin, 30rem); 
-      height: min(40vmin, 30rem);
-      max-width: none;
-    }
+.subtitle {
+  font-size: min(7vmin, 2rem);
+  font-style: italic;
+  color: #ddd;
+}
+
+section {
+  padding: 1vmin 0;
+  position: relative; 
+}
+
+main {
+  padding-bottom: 5vmin;
+}
+
+h2 {
+  font-family: 'africa', sans-serif;
+  color: #cd853f;
+  font-size: min(13vmin, 6.5rem);
+}
+
+section p {
+  max-width: 800px;
+  margin: min(5vmin, 2rem) auto;
+  font-size: min(6vmin, 2rem);
+}
+
+.evolution-item h3 {
+  font-size: min(4vmin, 3rem);
+  margin: min(4vmin, 2rem) 0 0;
+}
+
+.gallery-item, .gallery-item1, .gallery-item2 {
+  max-width: min(46vmin, 33rem);
+  height: min(35vmin, 29rem); 
+  border-radius: min(3vmin, 2rem);
+  border: .5vmin solid transparent;
+  transition: .25s;
+}
+
+.gallery-item1 {
+  width: min(24vmin, 23rem); 
+  height: min(25vmin, 24rem);
+  max-width: none;
+}
+
+.gallery-item2 {
+  width: min(65vmin, 50rem); 
+  height: min(35vmin, 25rem);
+  max-width: none;
+}
    
-    .gallery-item:hover, .gallery-item1:hover {
-      box-shadow: 0 8px 20px rgba(210, 105, 30, 0.4);
-      border-color: var(--accent);
-    }
+.gallery-item:hover, .gallery-item1:hover {
+  box-shadow: 0 8px 20px rgba(210, 105, 30, 0.4);
+  border-color: var(--accent);
+}
 
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      justify-content: center;
-      align-items: center;
-    }
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+}
 
-    .modal-content {
-      max-width: min(85vmin, 55rem);
-      max-height: min(55vmin, 35rem);
-      border-radius: 4vmin;
-      object-fit: contain;
-      box-shadow: 0 0 30px rgba(210, 105, 30, 0.5);
-    }
-    
-    .close {
-      position: absolute;
-      top: 5vmin;
-      right: 7.5vmin;
-      color: var(--accent);
-      font-size: 7vmin;
-    }
+.modal-content {
+  max-width: min(85vmin, 55rem);
+  max-height: min(55vmin, 35rem);
+  border-radius: 4vmin;
+  object-fit: contain;
+  box-shadow: 0 0 30px rgba(210, 105, 30, 0.5);
+}
 
-    .close:hover {
-      color: #cd853f;
-    }
+.close {
+  position: absolute;
+  top: 5vmin;
+  right: 7.5vmin;
+  color: var(--accent);
+  font-size: 7vmin;
+}
 
-    footer {
-      background-color: rgba(30, 30, 30, .95);
-      padding: min(4vmin, 1rem) 0;
-      width: 100%;
-      font-size: min(5vmin, 2rem);
-    }
+.close:hover {
+  color: #cd853f;
+}
 
-    .music-control {
-      position: fixed;
-      bottom: min(12vmin, 2rem);
-      right: min(2.25vmin, 3rem);
-      z-index: 100;
-      border-radius: min(2vmin, 2rem);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-    
-    .music-control button {
-      font-family: 'BinnerDi', Arial, sans-serif; 
-      background: linear-gradient(45deg, var(--accent), #654321);
-      color: white;
-      padding: min(2vmin, 2rem);
-      border-radius: min(3vmin, 1rem);
-      font-size: min(5vmin, 2rem);
-    }
-    
-    .music-control button:hover {
-      background: linear-gradient(45deg, #654321, var(--accent));
-    }
+footer {
+  background-color: rgba(30, 30, 30, .95);
+  padding: min(4vmin, 1rem) 0;
+  width: 100%;
+  font-size: min(5vmin, 3rem);
+  z-index: 5;
+  position: relative;
+}
 
-    a {
-      text-decoration: none;
-      font-size: min(15vw, 6rem);
-    }
-    
-    .casino-link {
-      display: inline-block;
-      padding: min(1vmin, 3rem) min(9vmin, 7rem) min(2vmin, 3rem);
-      color: #fff;
-      background: linear-gradient(45deg, var(--accent), #654321);
-      border-radius: 2vmin;
-    }
-    
-    .casino-link:hover {
-      box-shadow: 0 5px 15px rgba(210, 105, 30, 0.4);
-    }
+.music-control {
+  position: fixed;
+  bottom: min(12vmin, 2rem);
+  right: min(2.25vmin, 3rem);
+  z-index: 100;
+  border-radius: min(2vmin, 2rem);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
 
-    ::-webkit-scrollbar { width: 0; height: 0; }
-    html { scrollbar-width: none; }
-    body { -ms-overflow-style: none; }
-    button, div { -webkit-tap-highlight-color: transparent; background-color: none; }
-    *{scroll-behavior:smooth;}
+.music-control button {
+  font-family: 'BinnerDi', Arial, sans-serif; 
+  background: linear-gradient(45deg, var(--accent), #654321);
+  color: white;
+  padding: min(2vmin, 2rem);
+  border-radius: min(3vmin, 1rem);
+  font-size: min(5vmin, 2rem);
+}
+
+.music-control button:hover {
+  background: linear-gradient(45deg, #654321, var(--accent));
+}
+
+a {
+  text-decoration: none;
+  font-size: min(15vw, 6rem);
+}
+
+.casino-link {
+  display: inline-block;
+  padding: min(1vmin, 3rem) min(9vmin, 7rem) min(2vmin, 3rem);
+  color: #fff;
+  background: linear-gradient(45deg, var(--accent), #654321);
+  border-radius: 2vmin;
+}
+
+.casino-link:hover {
+  box-shadow: 0 5px 15px rgba(210, 105, 30, 0.4);
+}
+
+::-webkit-scrollbar { width: 0; height: 0; }
+html { scrollbar-width: none; }
+body { -ms-overflow-style: none; }
+button, div { -webkit-tap-highlight-color: transparent; background-color: none; }
+*{scroll-behavior:smooth;}
   </style>
 </head>
+
 <body>
   <header>
     <div class="container darker">
       <h1>ильяс</h1>
       <p class="subtitle">Лидер, вдохновитель, наследник Африки</p>
     </div>
+
     <audio id="bg-music" loop="" preload="auto">
       <source src="2.mp3" type="audio/mp3">
     </audio>
   </header>
 
-  <div class="music-control">
-    <button id="music-toggle">Включить музыку</button>
-  </div>
+    <div class="music-control">
+      <button id="music-toggle">Включить музыку</button>
+    </div>
 
-  <main>
-    <section>
-      <div class="container">
-        <h2>история ильяса</h2>
-        <p>ильяс – человек, чья жизнь и работа тесно связаны с африканским наследием. родившись в семье, которая хранила традиции своих предков,  он с детства впитывал культурные ценности Африки</p>
-        <p>Вдохновленный великими африканскими лидерами, такими как Нельсон Мандела и Томас Санкара, ильяс посвятил свою жизнь продвижению африканской культуры</p>
-        <div class="image-grid">
-          <img class="gallery-item" src="p/1.jpg"><img class="gallery-item" src="p/2.jpg">
-        </div>
-        <div class="image-grid">
-          <img class="gallery-item" src="p/4.jpg"><img class="gallery-item" src="p/3.jpg">
-        </div>
-      </div>
-    </section>
+      <main>
+        <section>
+          <div class="container">
+            <h2>история ильяса</h2>
+            <p>ильяс – человек, чья жизнь и работа тесно связаны с африканским наследием. родившись в семье, которая хранила традиции своих предков,  он с детства впитывал культурные ценности Африки</p>
+            <p>Вдохновленный великими африканскими лидерами, такими как Нельсон Мандела и Томас Санкара, ильяс посвятил свою жизнь продвижению африканской культуры</p>
+            
+            <div class="image-grid">
+              <img class="gallery-item" src="p/1.jpg"><img class="gallery-item" src="p/2.jpg">
+            </div>
 
-    <section>
-      <div class="container">
-        <h2>родина</h2>
-        <p>Африка – это колыбель цивилизации. именно здесь родились древние империи – Мали, Гана, Сонгай, Куш. Эти великие царства оставили после себя бесценное наследие</p>
-      </div>
-    </section>
-    
-    <section>
-      <div class="container">
-        <h2>развитие ильяса</h2>
-        
-        <div class="evolution-item">
-          <h3>из мелкого работяги</h3>
-          <div class="image-grid large">
-            <img src="p/6.jpg" class="gallery-item1">
+            <div class="image-grid">
+              <img class="gallery-item" src="p/4.jpg"><img class="gallery-item" src="p/3.jpg">
+            </div>
           </div>
-        </div>
-        
-        <div class="evolution-item">
-          <h3>в машину</h3>
-          <div class="image-grid large">
-            <img src="p/7.jpg" class="gallery-item1">
+        </section>
+
+        <section>
+          <div class="container">
+            <h2>родина</h2> 
+            <p>Африка – это колыбель цивилизации. именно здесь родились древние империи – Мали, Гана, Сонгай, Куш. Эти великие царства оставили после себя бесценное наследие</p>
           </div>
-        </div>
-        
-        <div class="evolution-item">
-          <h3>а из машины в это</h3>
-          <div class="image-grid large">
-            <img src="p/8.jpg" class="gallery-item1">
+        </section>
+
+        <section>
+          <div class="container">
+            <h2>развитие ильяса</h2>
+
+              <div class="evolution-item">
+                <h3>из мелкого<br>работяги</h3>
+                <div class="image-grid large">
+                  <img src="p/6.jpg" class="gallery-item1">
+                </div>
+              </div>
+
+              <div class="evolution-item">
+                <h3>в машину</h3>
+                <div class="image-grid large">
+                  <img src="p/7.jpg" class="gallery-item1">
+                </div>
+              </div>
+
+              <div class="evolution-item">
+                <h3>а из машины<br>в это</h3>
+                <div class="image-grid large">
+                  <img src="p/8.jpg" class="gallery-item1">
+                </div>
+              </div>
+
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section>
-      <div class="container">
-        <h2>Спасибо за помощь</h2>
-        <p>ильяс успешный игрок в онлайн-казино, зарабатывая миллионы на ставках он помогает бедным регионам Африки, но эти миллионы с минусом в начале</p>
-        <div class="image-grid large">
-          <img src="p/5.jpg" class="gallery-item1">
-        </div>
-      </div>
-    </section>
+        <section>
+          <div class="container">
+            <h2>Спасибо за помощь</h2>
+            <p>ильяс успешный игрок в онлайн-казино, зарабатывая миллионы на ставках он помогает бедным регионам Африки, но эти миллионы с минусом в начале</p>
+            <div class="image-grid large">
+              <img src="p/5.jpg" class="gallery-item2">
+            </div>
+          </div>
+        </section>
 
-    <section> 
-      <div class="container">
-        <h2>работа</h2>
-        <p>Воттут ильяс и зарабатывает</p>
-        <a onclick="window.location.href='hshs.html'" target="_blank" class="casino-link">додеп</a>
-      </div>    
-    </section>
-  </main>
+        <section>
+          <div class="container">
+            <h2>работа</h2>
+            <p>Воттут ильяс и зарабатывает</p>
+            <a onclick="window.location.href='hshs.html'" target="_blank" class="casino-link">додеп</a>
+          </div>
+        </section>
+      </main>
 
-  <footer>
-    <p>С первым апреля</p>
-  </footer>
+<footer>
+  <p>С первым апреля</p>
+</footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const bgMusic = document.getElementById('bg-music');
-      const musicToggle = document.getElementById('music-toggle');
-      let isMusicPlaying = false;
-      function toggleMusic() {
-        if (isMusicPlaying) {
-          bgMusic.pause();
-          musicToggle.textContent = 'Включить музыку';
-        } else {
-          bgMusic.play().catch(() => {
-            console.log('Автовоспроизведение заблокировано');
-          });
-          musicToggle.textContent = 'Выключить музыку';
-        }
-        isMusicPlaying = !isMusicPlaying;
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const bgMusic = document.getElementById('bg-music');
+    const musicToggle = document.getElementById('music-toggle');
+    let isMusicPlaying = false;
+
+    function toggleMusic() {
+      if (isMusicPlaying) {
+        bgMusic.pause();
+        musicToggle.textContent = 'Включить музыку';
+      } else {
+      bgMusic.play().catch(() => {
+        console.log('Автовоспроизведение заблокировано');
+      });
+      musicToggle.textContent = 'Выключить музыку';
       }
-      musicToggle.addEventListener('click', toggleMusic);
-    });
+      isMusicPlaying = !isMusicPlaying;
+    }
+  musicToggle.addEventListener('click', toggleMusic);
+});
   </script>
 </body>
 </html>
