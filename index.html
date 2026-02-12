@@ -8,6 +8,7 @@
   <link rel="icon" type="image/png" href="p/8.jpg">
   <title>Биография</title>
 <style> 
+ 
 @font-face {
   font-family: 'africa';
   src: url('font/ST-Africa.woff') format('woff');
@@ -214,17 +215,25 @@ button {
   padding: 1vmin;
 }
 
-#mp p, #mp pp{
+#mp p, #mp pp, #mp ppp {
   font-size: 7.5vmin;
   line-height: .52em;
-  letter-spacing: -.02em;
+  letter-spacing: -0.04em;
   margin-bottom: 1.5vmin;
   color: #d5d1ff;
 }
 
+#mp ppp {
+  font-size: 10vmin;
+  letter-spacing: .2em;
+  color: #fff;
+  text-shadow: 0 0 5vmin rgb(172, 172, 172);
+  font-family: 'africa', sans-serif;
+}
+
 #mp pp {
-  font-size: 4vmin;
-  color: #8486bb;
+  font-size: 3.5vmin;
+  color: #5d5e8b;
 }
 
 ::-webkit-scrollbar { width: 0; height: 0; }
@@ -248,7 +257,7 @@ button, div { -webkit-tap-highlight-color: transparent; background-color: none; 
 
     <div id="mp" onclick="playMusic()">
       <button><img class="gallery-itemm" src="cinema.jpg"></button>
-      <p>Скоро, во всех кинотеатрах россии и нигерии</p>
+      <ppp>Скоро</ppp><p>во всех кинотеатрах<br>россии и нигерии</p>
       <pp>чтоб скрыть нажми на экран</pp>
     </div>
 
@@ -356,5 +365,4 @@ button, div { -webkit-tap-highlight-color: transparent; background-color: none; 
 });
   </script>
 </body>
-
 </html>
