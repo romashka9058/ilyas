@@ -245,10 +245,9 @@ button, div { -webkit-tap-highlight-color: transparent; background-color: none; 
     <audio id="bg-music" loop="" preload="auto">
       <source src="2.mp3" type="audio/mp3">
     </audio>
-  </header>
 
-    <div id="mp">
-      <button onclick="playMusic()"><img class="gallery-itemm" src="cinema.jpg"></button>
+    <div id="mp" onclick="playMusic()">
+      <button><img class="gallery-itemm" src="cinema.jpg"></button>
       <p>Скоро, во всех кинотеатрах россии и негерии</p>
       <pp>чтоб скрыть нажми на экран</pp>
     </div>
@@ -256,7 +255,8 @@ button, div { -webkit-tap-highlight-color: transparent; background-color: none; 
     <div class="music-control">
       <button id="music-toggle">Включить музыку</button>
     </div>
-
+  </header>
+  
       <main>
         <section>
           <div class="container">
