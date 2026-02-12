@@ -8,7 +8,6 @@
   <link rel="icon" type="image/png" href="p/8.jpg">
   <title>Биография</title>
 <style> 
- 
 @font-face {
   font-family: 'africa';
   src: url('font/ST-Africa.woff') format('woff');
@@ -56,7 +55,7 @@ body::before{
 }
 
 .container {
-  background-color: rgba(47, 47, 47, 0.97);
+  background-color: rgba(47, 47, 47, 0.95);
   width: 90%;
   max-width: 72rem;
   padding: 2vmin;
@@ -81,7 +80,7 @@ h1 {
   font-family: 'africa', sans-serif;
   font-size: min(20vmin, 14rem);
   color: var(--accent);
-  text-shadow: 0 0 10px rgba(210, 105, 30, 0.5);
+  text-shadow: 0 0 5vmin rgba(210, 105, 30, 0.5);
 }
 
 .subtitle {
@@ -137,41 +136,8 @@ section p {
 }
    
 .gallery-item:hover, .gallery-item1:hover {
-  box-shadow: 0 8px 20px rgba(210, 105, 30, 0.4);
+  box-shadow: 0 0 10vmin rgba(210, 105, 30, 0.4);
   border-color: var(--accent);
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  max-width: min(85vmin, 55rem);
-  max-height: min(55vmin, 35rem);
-  border-radius: 4vmin;
-  object-fit: contain;
-  box-shadow: 0 0 30px rgba(210, 105, 30, 0.5);
-}
-
-.close {
-  position: absolute;
-  top: 5vmin;
-  right: 7.5vmin;
-  color: var(--accent);
-  font-size: 7vmin;
-}
-
-.close:hover {
-  color: #cd853f;
 }
 
 footer {
@@ -189,7 +155,7 @@ footer {
   right: min(2.25vmin, 3rem);
   z-index: 100;
   border-radius: min(2vmin, 2rem);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 1vmin 2vmin 4vmin rgba(0, 0, 0, .5);
 }
 
 .music-control button {
@@ -199,6 +165,7 @@ footer {
   padding: min(2vmin, 2rem);
   border-radius: min(3vmin, 1rem);
   font-size: min(5vmin, 2rem);
+  border: none;
 }
 
 .music-control button:hover {
@@ -222,12 +189,49 @@ a {
   box-shadow: 0 5px 15px rgba(210, 105, 30, 0.4);
 }
 
+button {
+  background: none;
+  border: none;
+}
+
+.gallery-itemm {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 2vmin;
+  box-shadow: 0 0 50vmin rgb(95, 66, 145);
+}
+
+#mp{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100vh;
+  background:rgba(0,0,0,.9);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  z-index:1000;
+  padding: 1vmin;
+}
+
+#mp p, #mp pp{
+  font-size: 7.5vmin;
+  line-height: .52em;
+  letter-spacing: -.02em;
+  margin-bottom: 1.5vmin;
+  color: #d5d1ff;
+}
+
+#mp pp {
+  font-size: 4vmin;
+  color: #8486bb;
+}
+
 ::-webkit-scrollbar { width: 0; height: 0; }
 html { scrollbar-width: none; }
 body { -ms-overflow-style: none; }
 button, div { -webkit-tap-highlight-color: transparent; background-color: none; }
 *{scroll-behavior:smooth;}
-  
 </style>
 </head>
 
@@ -242,6 +246,12 @@ button, div { -webkit-tap-highlight-color: transparent; background-color: none; 
       <source src="2.mp3" type="audio/mp3">
     </audio>
   </header>
+
+    <div id="mp">
+      <button onclick="playMusic()"><img class="gallery-itemm" src="cinema.jpg"></button>
+      <p>Скоро, во всех кинотеатрах россии и негерии</p>
+      <pp>чтоб скрыть нажми на экран</pp>
+    </div>
 
     <div class="music-control">
       <button id="music-toggle">Включить музыку</button>
@@ -324,6 +334,7 @@ button, div { -webkit-tap-highlight-color: transparent; background-color: none; 
 </footer>
 
 <script>
+  const playMusic=()=>mp.style.display='none';
   document.addEventListener('DOMContentLoaded', () => {
     const bgMusic = document.getElementById('bg-music');
     const musicToggle = document.getElementById('music-toggle');
