@@ -8,38 +8,32 @@
   <link rel="icon" type="image/png" href="p/8.jpg">
   <title>Биография</title>
 <style> 
- 
+::-webkit-scrollbar {width: 0; height: 0;}
+html {scrollbar-width: none;}
+body {-ms-overflow-style: none;}
+button, div {border: none; background: none;}
+* {margin: 0; box-sizing: border-box; scroll-behavior:smooth;}
+html, body {overflow-x: hidden; overflow-y: auto;}
+main {padding-bottom: 5vmin;}
+
 @font-face {
   font-family: 'africa';
-  src: url('font/ST-Africa.woff') format('woff');
-}
+  src: url('font/ST-Africa.woff') format('woff');}
+@font-face {
+  font-family: 'Copperplate';
+  src: url('font/ofont.ru_Copperplate.woff') format('woff');}
 @font-face {
   font-family: 'BinnerDi';
-  src: url('font/ofont.ru_BinnerDi_1.woff') format('woff');
-}
+  src: url('font/ofont.ru_BinnerDi_1.woff') format('woff');}
 
-:root {
-  --accent: #d2691e;
-}
-
-* {
-  margin: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
 
 body{
-  font-family:'BinnerDi',Arial,sans-serif;
+  font-family:'Copperplate',Arial,sans-serif;
   color:#fff;
   position:relative;
   background:#3f3f3f;
   text-align: center; 
 }
-
 body::before{
   content:"";
   position:fixed;
@@ -51,43 +45,46 @@ body::before{
   z-index:-10;
 }
 
+
 .evolution-item {
   display: inline-grid;
 }
 
 .container {
-  background-color: rgba(47, 47, 47, 0.95);
-  width: 90%;
-  max-width: 72rem;
-  padding: 2vmin;
+  background-color: rgba(34, 15, 15, 0.94);
+  width: min(90%, 72rem);
+  padding-bottom: 4vmin;
   border-radius: min(4vmin, 1rem);
   margin: 0 auto 0;
-  line-height: 0.8;
+  line-height: .8;
   box-shadow: 0 5vmin 9vmin rgba(0, 0, 0, 0.75);
-  border: .2vmin solid rgba(139, 89, 0, 1);
+  border: .2vmin solid rgba(255, 163, 0, 0.5);
   position: relative;
   z-index:1;
 }
 
 .container.darker {
-  background-color: rgba(25, 25, 25, 1);
+  background-color: rgb(21, 0, 0);
   padding: min(10vmin, 5rem);
   width: 100%;
-  bottom: 4vmin;
+  bottom: 2vmin;
   max-width: none;
 }
 
 h1 {
   font-family: 'africa', sans-serif;
-  font-size: min(20vmin, 14rem);
-  color: var(--accent);
-  text-shadow: 0 0 5vmin rgba(210, 105, 30, 0.5);
+  font-size: min(23vmin, 14rem);
+  color: #d2691e;
+  text-shadow: 0 0 15vmin rgb(164, 91, 40);
+  transform: scaleY(1.5);
 }
 
 .subtitle {
-  font-size: min(5vmin, 3rem);
-  font-style: italic;
+  font-size: min(5vmin, 2rem);
   color: #dfdfdf;
+  margin-top: 6vmin;
+  z-index: 1;
+  position: relative;
 }
 
 section {
@@ -95,38 +92,37 @@ section {
   position: relative; 
 }
 
-main {
-  padding-bottom: 5vmin;
-}
-
 h2 {
   font-family: 'africa', sans-serif;
   color: #cd853f;
-  font-size: min(11vmin, 6.5rem);
+  font-size: min(13vmin, 9rem);
+  margin: 2vmin;
 }
 
 section p {
-  max-width: 75vw;
-  margin: min(3vmin, 1.5rem) auto;
-  font-size: min(5vmin, 2rem);
+  max-width: min(75vw, 60rem);
+  margin: min(1vmin, 1.5rem) auto;
+  font-size: min(6vmin, 2.25rem);
+  transform: scaleY(.9);
+  letter-spacing: -0.08em;
 }
 
 .evolution-item h3 {
-  font-size: min(4vmin, 3rem);
-  margin: min(4vmin, 2rem) 0 0;
+  font-size: min(4.5vmin, 4rem);
+  margin: 2vmin 0 1vmin;
 }
 
 .gallery-item, .gallery-item1, .gallery-item2 {
   max-width: min(46vmin, 33rem);
   height: min(35vmin, 29rem); 
   border-radius: min(3vmin, 2rem);
-  border: .5vmin solid transparent;
+  border: .3vmin solid transparent;
   transition: .25s;
 }
 
 .gallery-item1 {
-  width: min(24vmin, 23rem); 
-  height: min(25vmin, 24rem);
+  width: 26vmin; 
+  height: 27vmin;
   max-width: none;
 }
 
@@ -138,109 +134,50 @@ section p {
    
 .gallery-item:hover, .gallery-item1:hover {
   box-shadow: 0 0 10vmin rgba(210, 105, 30, 0.4);
-  border-color: var(--accent);
+  border-color: #d2691e;
 }
 
-footer {
-  background-color: rgba(30, 30, 30, .95);
-  padding: min(4vmin, 1rem) 0;
-  width: 100%;
-  font-size: min(5vmin, 3rem);
-  z-index: 5;
-  position: relative;
-}
 
-.music-control {
-  position: fixed;
-  bottom: min(12vmin, 2rem);
-  right: min(2.25vmin, 3rem);
-  z-index: 100;
-  border-radius: min(2vmin, 2rem);
-  box-shadow: 1vmin 2vmin 4vmin rgba(0, 0, 0, .5);
-}
-
-.music-control button {
-  font-family: 'BinnerDi', Arial, sans-serif; 
-  background: linear-gradient(45deg, var(--accent), #654321);
-  color: white;
-  padding: min(2vmin, 2rem);
-  border-radius: min(3vmin, 1rem);
-  font-size: min(5vmin, 2rem);
-  border: none;
-}
-
-.music-control button:hover {
-  background: linear-gradient(45deg, #654321, var(--accent));
-}
-
-a {
-  text-decoration: none;
-  font-size: min(15vw, 6rem);
-}
-
-.casino-link {
-  display: inline-block;
-  padding: min(1vmin, 3rem) min(9vmin, 7rem) min(2vmin, 3rem);
-  color: #fff;
-  background: linear-gradient(45deg, var(--accent), #654321);
-  border-radius: 2vmin;
-}
-
-.casino-link:hover {
-  box-shadow: 0 5px 15px rgba(210, 105, 30, 0.4);
-}
-
-button {
-  background: none;
-  border: none;
-}
-
-.gallery-itemm {
-  max-width: 90%;
-  max-height: 80vh;
-  border-radius: 2vmin;
-  box-shadow: 0 0 50vmin rgb(95, 66, 145);
-}
 
 #mp{
   position:fixed;
   inset:0;
   width:100vw;
   height:100vh;
-  background:rgba(0,0,0,.9);
+  background:rgba(0,0,0,.95);
   display:flex;
   flex-direction:column;
   justify-content:center;
-  z-index:1000;
-  padding: 1vmin;
+  z-index:10;
 }
-
+.gallery-itemm {
+  width: min(85%, 45rem);
+  height: 60vh;
+  border-radius: 2vmin;
+  box-shadow: 0 0 50vmin rgb(95, 66, 145);
+}
 #mp p, #mp pp, #mp ppp {
-  font-size: 7.5vmin;
-  line-height: .52em;
-  letter-spacing: -0.04em;
-  margin-bottom: 1.5vmin;
+  font-size: min(8vmin, 4rem);
+  line-height: 0.65em;
+  letter-spacing: -0.08em;
+  margin: 1vmin;
   color: #d5d1ff;
 }
-
 #mp ppp {
-  font-size: 10vmin;
-  letter-spacing: .2em;
+  font-size: min(17vmin, 8rem);
   color: #fff;
-  text-shadow: 0 0 5vmin rgb(172, 172, 172);
-  font-family: 'africa', sans-serif;
+  text-shadow: 0 0 10vmin rgb(172, 172, 172);
+  font-family: 'BinnerDi', sans-serif;
+  transform: scaleY(1.25) scaleX(2);
 }
-
 #mp pp {
-  font-size: 3.5vmin;
+  font-size: min(5vmin, 2rem);
   color: #5d5e8b;
+  position: fixed;
+  display: flex;
+  align-self: center;
+  bottom: 0;
 }
-
-::-webkit-scrollbar { width: 0; height: 0; }
-html { scrollbar-width: none; }
-body { -ms-overflow-style: none; }
-button, div { -webkit-tap-highlight-color: transparent; background-color: none; }
-*{scroll-behavior:smooth;}
 </style>
 </head>
 
@@ -248,10 +185,10 @@ button, div { -webkit-tap-highlight-color: transparent; background-color: none; 
   <header>
     <div class="container darker">
       <h1>ильяс</h1>
-      <p class="subtitle">Лидер, вдохновитель, наследник Африки</p>
+      <p class="subtitle">Стендоффер второй, Киберкотлет и Наследник Нигерии</p>
     </div>
 
-    <audio id="bg-music" loop="" preload="auto">
+    <audio id="bg-music" preload="auto">
       <source src="2.mp3" type="audio/mp3">
     </audio>
 
@@ -260,18 +197,30 @@ button, div { -webkit-tap-highlight-color: transparent; background-color: none; 
       <ppp>Скоро</ppp><p>во всех кинотеатрах<br>россии и нигерии</p>
       <pp>чтоб скрыть нажми на экран</pp>
     </div>
-
-    <div class="music-control">
-      <button id="music-toggle">Включить музыку</button>
-    </div>
+    
   </header>
   
       <main>
         <section>
           <div class="container">
             <h2>история ильяса</h2>
-            <p>ильяс – человек, чья жизнь и работа тесно связаны с африканским наследием. родившись в семье, которая хранила традиции своих предков,  он с детства впитывал культурные ценности Африки</p>
-            <p>Вдохновленный великими африканскими лидерами, такими как Нельсон Мандела и Томас Санкара, ильяс посвятил свою жизнь продвижению африканской культуры</p>
+            <p>
+              Ильяс это тот гуманоид, о котором думают, что его не существует. 
+              Ильяс родился в семье нигерийского президента и с самого детства был окружен роскошью (5 литров воды). 
+              В возрасте 10 лет он переехал в Россию для учёбы без знания русского языка.
+              Благодаря своей упорности и стремлению к знаниям быстро освоил язык и сдал устный русский.
+            </p>
+            <p>
+              Вдохновленный великими африканскими лидерами, 
+              такими как Нельсон Мандела и Томас Санкара, 
+              Ильяс посвятил свою жизнь продвижению африканской культуры и развитию своего народа.
+              Его видение перемен было ясным и амбициозным.
+            </p>
+            <p>
+              После успешного завершения образования в России, Ильяс вернется в Африку с целью помочь развитию экономики. 
+              Его амбиции и предприимчивость не знают границ, он начнет строить различные проекты и инвестировать в будущее своего континента.
+              Каждый шаг будет направлен на создание лучшего будущего для его народа.
+            </p>
             
             <div class="image-grid">
               <img class="gallery-item" src="p/1.jpg"><img class="gallery-item" src="p/2.jpg">
@@ -286,43 +235,61 @@ button, div { -webkit-tap-highlight-color: transparent; background-color: none; 
         <section>
           <div class="container">
             <h2>родина</h2> 
-            <p>Африка – это колыбель цивилизации. именно здесь родились древние империи – Мали, Гана, Сонгай, Куш. Эти великие царства оставили после себя бесценное наследие</p>
+            <p>
+              Африка это колыбель цивилизации. 
+              Именно здесь родились древние империи Мали, Гана, Сонгай, Куш. 
+              Эти великие царства оставили после себя бесценное наследие
+            </p>
+            <p>
+              В то время как западные страны колонизировали Африку, 
+              африканские народы сопротивлялись и боролись за свободу. 
+              Наследие этих великих цивилизаций живёт в сердцах миллионов африканцев, 
+              вдохновляя их на создание лучшего будущего.
+            </p>
+            <p>
+              Ильяс глубоко уважает историю своего континента и стремится возродить утерянную славу Африки. 
+              Он верит, что образование и предпринимательство это ключи к процветанию его народа.
+              Его мечта увидеть Африку среди мировых лидеров инноваций и технологий.
+            </p>
           </div>
         </section>
 
         <section>
           <div class="container">
-            <h2>развитие ильяса</h2>
+            <h2>Галерея</h2>
 
               <div class="evolution-item">
-                <h3>из мелкого<br>работяги</h3>
+                <h3>В<br>Казани</h3>
                 <div class="image-grid large">
                   <img src="p/6.jpg" class="gallery-item1">
                 </div>
               </div>
 
               <div class="evolution-item">
-                <h3>в машину</h3>
+                <h3>На работе</h3>
                 <div class="image-grid large">
                   <img src="p/7.jpg" class="gallery-item1">
                 </div>
               </div>
 
               <div class="evolution-item">
-                <h3>а из машины<br>в это</h3>
+                <h3>В<br>Африке</h3>
                 <div class="image-grid large">
                   <img src="p/8.jpg" class="gallery-item1">
                 </div>
               </div>
 
             </div>
-          </div>
+          
         </section>
 
         <section>
           <div class="container">
-            <h2>Спасибо за помощь</h2>
-            <p>ильяс успешный игрок в онлайн-казино, зарабатывая миллионы на ставках он помогает бедным регионам Африки, но эти миллионы с минусом в начале</p>
+            <h2>Помощь</h2>
+            <p>Ильяс успешный игрок в онлайн-казино, 
+              зарабатывая миллионы на ставках он помогает бедным регионам Африки, 
+              но эти миллионы с минусом в начале
+            </p>
             <div class="image-grid large">
               <img src="p/5.jpg" class="gallery-item2">
             </div>
@@ -330,39 +297,16 @@ button, div { -webkit-tap-highlight-color: transparent; background-color: none; 
         </section>
 
         <section>
-          <div class="container">
-            <h2>работа</h2>
-            <p>Воттут ильяс и зарабатывает</p>
-            <a onclick="window.location.href='hshs.html'" target="_blank" class="casino-link">додеп</a>
+          <div class="container" style="padding-bottom: 0">
+            
+            <iframe src="./hshs.html" style="width: 100%; height: 75vh; border: none; border-radius: 2vmin;"></iframe>
           </div>
         </section>
       </main>
 
-<footer>
-  <p>С первым апреля</p>
-</footer>
-
-<script>
-  const playMusic=()=>mp.style.display='none';
-  document.addEventListener('DOMContentLoaded', () => {
+  <script>
+    const playMusic=()=>{mp.style.display='none'; bgMusic.play();};
     const bgMusic = document.getElementById('bg-music');
-    const musicToggle = document.getElementById('music-toggle');
-    let isMusicPlaying = false;
-
-    function toggleMusic() {
-      if (isMusicPlaying) {
-        bgMusic.pause();
-        musicToggle.textContent = 'Включить музыку';
-      } else {
-      bgMusic.play().catch(() => {
-        console.log('Автовоспроизведение заблокировано');
-      });
-      musicToggle.textContent = 'Выключить музыку';
-      }
-      isMusicPlaying = !isMusicPlaying;
-    }
-  musicToggle.addEventListener('click', toggleMusic);
-});
   </script>
 </body>
 </html>
