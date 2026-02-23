@@ -13,8 +13,6 @@ html {scrollbar-width: none;}
 body {-ms-overflow-style: none;}
 button, div {border: none; background: none;}
 * {margin: 0; box-sizing: border-box; scroll-behavior:smooth;}
-html, body {overflow-x: hidden; overflow-y: auto;}
-main {padding-bottom: 5vmin;}
 
 @font-face {
   font-family: 'africa';
@@ -96,8 +94,8 @@ section {
 h2 {
   font-family: 'africa', sans-serif;
   color: #cd853f;
-  font-size: min(13.5vmin, 9rem);
-  margin: 2vmin;
+  font-size: min(14vmin, 9rem);
+  margin-top: 2vmin;
   letter-spacing: -.03em;
 }
 
@@ -137,6 +135,17 @@ section p {
 .gallery-item:hover, .gallery-item1:hover {
   box-shadow: 0 0 10vmin rgba(210, 105, 30, 0.4);
   border-color: #d2691e;
+}
+
+iframe {
+  width: 100%; 
+  height: 117vmin; 
+  border: none;
+  bottom: -1vmin;
+  position: relative;
+  margin-top: 10vmin;
+  border-radius: 4vmin 4vmin 0 0;
+  box-shadow: 0 0 6vmin rgb(25, 9, 9);
 }
 
 
@@ -297,12 +306,7 @@ section p {
             </div>
           </div>
         </section>
-
-        <section>
-          <div class="container" style="padding-bottom: 0">
-            <iframe src="./hshs.html" style="width: 100%; height: 100vmin; border: none; border-radius: min(4vmin, 1rem);"></iframe>
-          </div>
-        </section>
+            <iframe src="./hshs.html" style="width: 100%; height: 115vmin; border: none; border-radius: 4vmin 4vmin 0 0;"></iframe>
       </main>
 
   <script>
@@ -310,5 +314,4 @@ section p {
     const bgMusic = document.getElementById('bg-music');
   </script>
 </body>
-
 </html>
