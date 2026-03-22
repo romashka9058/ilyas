@@ -54,7 +54,7 @@ body::before{
   padding-bottom: 4vmin;
   border-radius: min(4vmin, 1rem);
   margin: 0 auto 0;
-  line-height: .8;
+  line-height: 1;
   box-shadow: 0 5vmin 9vmin rgba(0, 0, 0, 0.75);
   border: .2vmin solid rgba(255, 163, 0, 0.5);
   position: relative;
@@ -94,21 +94,23 @@ section {
 h2 {
   font-family: 'africa', sans-serif;
   color: #cd853f;
-  font-size: min(14vmin, 9rem);
+  font-size: min(14vmin, 7rem);
   margin-top: 2vmin;
   letter-spacing: -.03em;
+  line-height: 0.8;
+  margin-bottom: 1vmin;
 }
 
 section p {
   max-width: min(85vw, 60rem);
   margin: 0 auto;
-  font-size: min(5vmin, 2rem);
+  font-size: min(4.5vmin, 2rem);
   transform: scaleY(.9);
-  letter-spacing: -0.05em;
+  letter-spacing: -0.06em;
 }
 
 .evolution-item h3 {
-  font-size: min(4.5vmin, 4rem);
+  font-size: min(5vmin, 3rem);
   margin: 2vmin 0 1vmin;
 }
 
@@ -165,7 +167,8 @@ iframe {
   width: min(85%, 45rem);
   height: 60vh;
   border-radius: 2vmin;
-  box-shadow: 0 0 50vmin rgb(95, 66, 145);
+  box-shadow: 0 0 50vmin rgb(40, 0, 108);
+  border: .2vmin inset rgb(141, 77, 255);
 }
 #mp p, #mp pp, #mp ppp {
   font-size: min(8vmin, 4rem);
