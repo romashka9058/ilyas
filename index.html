@@ -8,6 +8,7 @@
   <link rel="icon" type="image/png" href="p/8.jpg">
   <title>Биография</title>
 <style> 
+ 
 ::-webkit-scrollbar {width: 0; height: 0;}
 html {scrollbar-width: none;}
 body {-ms-overflow-style: none;}
@@ -50,7 +51,7 @@ body::before{
 
 .container {
   background-color: rgba(34, 15, 15, 0.94);
-  width: min(90%, 72rem);
+  width: min(90%, 100rem);
   padding-bottom: 4vmin;
   border-radius: min(4vmin, 1rem);
   margin: 0 auto 0;
@@ -71,7 +72,7 @@ body::before{
 
 h1 {
   font-family: 'africa', sans-serif;
-  font-size: min(21vmin, 14rem);
+  font-size: min(21vmin, 20rem);
   color: #d2691e;
   text-shadow: 0 0 15vmin rgb(164, 91, 40);
   transform: scaleY(1.5);
@@ -80,7 +81,7 @@ h1 {
 .subtitle {
   font-size: min(5vmin, 2rem);
   color: #dfdfdf;
-  margin-top: 6vmin;
+  margin-top: min(6vmin, 3rem);
   z-index: 1;
   position: relative;
   letter-spacing: -0.075em;
@@ -94,7 +95,7 @@ section {
 h2 {
   font-family: 'africa', sans-serif;
   color: #cd853f;
-  font-size: min(14vmin, 7rem);
+  font-size: min(14vmin, 10rem);
   margin-top: 2vmin;
   letter-spacing: -.03em;
   line-height: 0.8;
@@ -102,29 +103,29 @@ h2 {
 }
 
 section p {
-  max-width: min(85vw, 60rem);
+  max-width: min(85vw, 92rem);
   margin: 0 auto;
-  font-size: min(4.5vmin, 2rem);
+  font-size: min(4.25vmin, 2.2rem);
   transform: scaleY(.9);
   letter-spacing: -0.06em;
 }
 
 .evolution-item h3 {
   font-size: min(5vmin, 3rem);
-  margin: 2vmin 0 1vmin;
+  margin: 1vmin 0 0.5vmin;
 }
 
 .gallery-item, .gallery-item1, .gallery-item2 {
-  max-width: min(46vmin, 33rem);
-  height: min(35vmin, 29rem); 
+  max-width: 46vmin;
+  height: 35vmin; 
   border-radius: min(3vmin, 2rem);
   border: .3vmin solid transparent;
   transition: .25s;
 }
 
 .gallery-item1 {
-  width: min(26vmin, 21rem); 
-  height: 25vmin;
+  width: 26vmin; 
+  height: 30vmin;
   max-width: none;
 }
 
@@ -192,6 +193,7 @@ iframe {
   align-self: center;
   bottom: 0;
 }
+
 </style>
 </head>
 
