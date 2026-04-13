@@ -7,7 +7,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 <style>
-
 @font-face {
   font-family: 'buyan';
   src: url('font/BuyanBold.woff') format('woff');}
@@ -79,7 +78,7 @@ body::before {
 
 h1 {
   color: var(--primary);
-  font-size: min(25vmin, 19rem);
+  font-size: min(25vmin, 13rem);
   text-shadow: 0 0 5vmin #000;
   font-family: 'BinnerDi';
 }
@@ -103,11 +102,11 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 75vmin;
+  width: min(75vmin, 60rem);
   position: relative;
   overflow: hidden;
   transition: transform 0.5s, box-shadow 0.3s;
-  padding: 2.5vmin;
+  padding: min(2.5vmin, 1.5rem);
   border: .2vmin solid var(--secondary);
 }
 
@@ -121,7 +120,7 @@ h1 {
 }
 
 .balance {
-  font-size: min(7vmin, 3.5rem);
+  font-size: min(7vmin, 3rem);
   margin-bottom: 2vmin;
   text-align: center;
   padding: 2vmin;
@@ -147,9 +146,9 @@ h1 {
 }
 
 .slot {
-  font-size: 19vmin;
-  width: min(20vmin, 17rem);
-  height: min(30vmin, 25rem);
+  font-size: min(19vmin, 10rem);
+  width: min(20vmin, 14rem);
+  height: min(30vmin, 19rem);
   background: linear-gradient(145deg, #333, #222);
   border-radius: 2vmin;
   display: flex;
@@ -178,7 +177,7 @@ h1 {
 }
 
 .spin-btn {
-  padding: 2vmin 5vmin;
+  padding: min(2vmin, 1rem);
   background: linear-gradient(to bottom, var(--primary), #c0392b);
   color: white;
   border-radius: 2vmin;
@@ -272,7 +271,7 @@ li {
         </div>
 
         <div class="debt-con">
-            <h2>топ 10</h2>
+            <h2>ТОП 9</h2>
             <ol id="leaderboard"></ol>
         </div>
     </div>
@@ -365,12 +364,12 @@ li {
         }
         items.sort((a, b) => a.balance - b.balance)
         board.innerHTML = items.length
-            ? items.slice(0, 10).map(u => `<li>${u.name} ${u.balance} тысяч</li>`).join('')
+            ? items.slice(0, 10).map(u => `<li>${u.name} <span style="opacity: 1">${u.balance}</span> тысяч</li>`).join('')
             : '<li>нет данных</li>'
     }
 
     function loadLeaderboard() {
-        database.ref('users').orderByChild('balance').limitToLast(10).on('value', snapshot => {
+        database.ref('users').orderByChild('balance').limitToLast(9).on('value', snapshot => {
             renderLeaderboard(snapshot.val() || {})
         })
     }
