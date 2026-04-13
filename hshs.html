@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>КАЗИНО</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script><script src="HE.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 <style>
 @font-face {
   font-family: 'buyan';
@@ -81,7 +84,7 @@ body::before {
 
 h1 {
   color: var(--primary);
-  font-size: min(24vmin, 13rem);
+  font-size: min(25vmin, 17rem);
   text-shadow: 0 0 5vmin #000;
   letter-spacing: -.05em;
   font-family: 'BinnerDi';
@@ -193,6 +196,7 @@ h1 {
   transition: transform .4s;
   border: .2vmin solid var(--secondary);
   letter-spacing: -.1em;
+  width: 70%;
 }
 
 .spin-btn:active {
@@ -213,11 +217,17 @@ h1 {
 .debt-con h2 {
   color: #FFA922;
   margin-bottom: .5vmin;
-  font-size: min(7vmin, 3rem);
+  font-size: min(8vmin, 5rem);
 }
 
 .debt-con p {
   font-size: min(5vmin, 2rem);
+}
+
+
+#leaderboard {
+  text-align:left; 
+  font-size: min(4.25vmin, 2.2rem);
 }
 </style>
 </head>
@@ -227,6 +237,7 @@ h1 {
     <div class="con">
         <h1 class="pulse">КАЗИНО</h1>
         <div class="gcon">
+            <div class="balance" style="display: none;">Игрок: <span id="playerName">...</span></div>
             <div class="balance">баланс: <span id="balance">100</span> тысяч</div>
             <div class="slot-machine">
                 <div class="slot" id="slot1">7</div>
@@ -237,44 +248,156 @@ h1 {
         </div>
 
         <div class="debt-con">
-            <h2>Самый большой долг</h2>
-            <p>92836291833880 - Рома</p>
+            <h2>топ 10</h2>
+            <ol id="leaderboard"></ol>
         </div>
     </div>
     
 <script>
-    const $=id=>document.getElementById(id)
-    const slots=[$('slot1'),$('slot2'),$('slot3')]
-    let balance=+localStorage.getItem('balance')||100
-    let debt=+localStorage.getItem('debt')||0
+    const $ = id => document.getElementById(id)
+    const slots = [$('slot1'), $('slot2'), $('slot3')]
+    const MAX_DELTA = 10
+    const SAVE_DELAY = 500
 
-    $('balance').textContent=balance
+    const firebaseConfig = {
+        apiKey: "AIzaSyCOF31IXWBEpZa4P8WfhOSVMYDI6WfSH4g",
+        authDomain: "chat-ac428.firebaseapp.com",
+        databaseURL: "https://chat-ac428-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "chat-ac428",
+        storageBucket: "chat-ac428.firebasestorage.app"
+    }
 
-    function spin(){
-    const btn=document.querySelector('.spin-btn')
-    btn.disabled=true;btn.textContent='опа опа щащащащщ'
-    slots.forEach(s=>s.classList.add('rolling'))
+    firebase.initializeApp(firebaseConfig)
+    const database = firebase.database()
 
-        const t=setInterval(()=>slots.forEach(s=>s.textContent=Math.floor(Math.random()*10)),200)
-            setTimeout(()=>{
+    const userId = localStorage.getItem('userId') || generateUserId()
+    let userName = localStorage.getItem('userName') || ''
+    let balance = Number(localStorage.getItem('balance')) || 100
+    let saving = false
+
+    localStorage.setItem('userId', userId)
+
+    initUser()
+    loadLeaderboard()
+
+    function generateUserId() {
+        return 'user_' + Math.random().toString(36).slice(2, 12) + '_' + Date.now().toString(36)
+    }
+
+    function promptForName() {
+        let name = localStorage.getItem('userName')
+        if (!name) {
+            name = prompt('Введите имя для сохранения счета', '')?.trim() || 'Игрок'
+            localStorage.setItem('userName', name)
+        }
+        return name
+    }
+
+    function initUser() {
+        userName = promptForName()
+        const userRef = database.ref('users/' + userId)
+        userRef.once('value').then(snapshot => {
+            const data = snapshot.val()
+            if (data) {
+                if (data.name) {
+                    userName = data.name
+                    localStorage.setItem('userName', userName)
+                }
+                balance = Number.isFinite(data.balance) ? data.balance : balance
+            } else {
+                userRef.set({
+                    name: userName,
+                    balance,
+                    createdAt: Date.now()
+                })
+            }
+            updateUI()
+        }).catch(console.error)
+    }
+
+    function updateUI() {
+        $('playerName').textContent = userName
+        $('balance').textContent = balance
+    }
+
+    function saveUserState(newBalance) {
+        const userRef = database.ref('users/' + userId)
+        return userRef.update({
+            balance: newBalance,
+            lastUpdate: Date.now()
+        })
+    }
+
+    function renderLeaderboard(users) {
+        const board = $('leaderboard')
+        const items = []
+        for (const key in users) {
+            if (users[key]) {
+                const balanceValue = Number(users[key].balance)
+                if (Number.isFinite(balanceValue)) {
+                    items.push({ name: users[key].name || 'Игрок', balance: balanceValue })
+                }
+            }
+        }
+        items.sort((a, b) => b.balance - a.balance)
+        board.innerHTML = items.length
+            ? items.slice(0, 10).map(u => `<li>${u.name} ${u.balance} тысяч</li>`).join('')
+            : '<li>нет данных</li>'
+    }
+
+    function loadLeaderboard() {
+        database.ref('users').orderByChild('balance').limitToLast(10).on('value', snapshot => {
+            renderLeaderboard(snapshot.val() || {})
+        })
+    }
+
+    function applyBalanceChange(delta) {
+        delta = Math.max(delta, -MAX_DELTA)
+        delta = Math.min(delta, 0)
+        if (delta === 0) return
+
+        saving = true
+        setTimeout(() => {
+            balance += delta
+            updateUI()
+            saveUserState(balance).catch(console.error)
+            localStorage.setItem('balance', balance)
+            saving = false
+        }, SAVE_DELAY)
+    }
+
+    function spin() {
+        if (saving) return
+        const btn = document.querySelector('.spin-btn')
+        btn.disabled = true
+        btn.textContent = 'опа опа щащащащщ'
+        slots.forEach(s => s.classList.add('rolling'))
+
+        const t = setInterval(() => slots.forEach(s => s.textContent = Math.floor(Math.random() * 10)), 200)
+        setTimeout(() => {
             clearInterval(t)
             let v
-            do{v=slots.map(()=>Math.floor(Math.random()*10))}
-            while(v[0]===v[1]&&v[1]===v[2])
+            do {
+                v = slots.map(() => Math.floor(Math.random() * 10))
+            } while (v[0] === v[1] && v[1] === v[2])
 
-        slots.forEach((s,i)=>{s.textContent=v[i];s.classList.remove('rolling')})
-        slots.forEach((slot, i) => {
+            slots.forEach((s, i) => {
+                s.textContent = v[i]
+                s.classList.remove('rolling')
+            })
+            slots.forEach((slot, i) => {
+                setTimeout(() => {
+                    slot.classList.add('hit')
+                    setTimeout(() => slot.classList.remove('hit'), 400)
+                }, i * 120)
+            })
+
+            applyBalanceChange(-10)
             setTimeout(() => {
-                slot.classList.add('hit');
-                setTimeout(() => slot.classList.remove('hit'), 400);
-            }, i * 120);
-        });
-        balance-=10
-            if(balance<0){debt=Math.abs(balance);localStorage.setItem('debt',debt)}
-            localStorage.setItem('balance',balance)
-            $('balance').textContent=balance
-            btn.disabled=false;btn.textContent='додеп'
-        },1500)
+                btn.disabled = false
+                btn.textContent = 'додеп'
+            }, SAVE_DELAY + 150)
+        }, 1500)
     }
 </script>
 </body>
