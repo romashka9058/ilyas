@@ -338,7 +338,7 @@ h1 {
                 }
             }
         }
-        items.sort((a, b) => b.balance - a.balance)
+        items.sort((a, b) => a.balance - b.balance)
         board.innerHTML = items.length
             ? items.slice(0, 10).map(u => `<li>${u.name} ${u.balance} тысяч</li>`).join('')
             : '<li>нет данных</li>'
