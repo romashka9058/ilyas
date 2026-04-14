@@ -7,6 +7,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 <style>
+
 @font-face {
   font-family: 'buyan';
   src: url('font/BuyanBold.woff') format('woff');}
@@ -223,9 +224,10 @@ ol {
   font-size: min(5vmin, 2.5rem);
   padding-left: min(8vmin, 5rem);
 }
-li {
+.lider {
+  display: block ruby;
   margin-bottom: 1vmin;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.07em;
 }
 
 
@@ -251,6 +253,7 @@ li {
     transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
   }
 }
+
 </style>
 </head>
 
@@ -363,12 +366,12 @@ li {
         }
         items.sort((a, b) => a.balance - b.balance)
         board.innerHTML = items.length
-            ? items.slice(0, 10).map(u => `<li>${u.name}:<span style="color: transparent;">-</span>${u.balance}<span style="color: transparent;">-</span>т.</li>`).join('')
+            ? items.slice(0, 10).map(u => `<li><div class="lider">${u.name}: ${u.balance} тысяч</div></li>`).join('')
             : '<li>нет данных</li>'
     }
 
     function loadLeaderboard() {
-        database.ref('users').orderByChild('balance').limitToLast(9).on('value', snapshot => {
+        database.ref('users').orderByChild('balance').limitToFirst(9).on('value', snapshot => {
             renderLeaderboard(snapshot.val() || {})
         })
     }
