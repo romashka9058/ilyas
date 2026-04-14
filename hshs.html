@@ -21,15 +21,6 @@
 :root {--primary: #FF0200; --secondary: #FFAE2FB0;}
 * {margin: 0; box-sizing: border-box;}
 
-
-span {
-  overflow: hidden;
-  display: inline-block;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: min(29vmin, 26rem);
-}
-
 body {
   font-family: 'Copperplate', sans-serif;
   background: linear-gradient(135deg, #2B0F07, #220F09);
@@ -230,6 +221,7 @@ h1 {
 ol {
   text-align:left; 
   font-size: min(5vmin, 2.5rem);
+  padding-left: min(8vmin, 5rem);
 }
 li {
   margin-bottom: 1vmin;
@@ -259,7 +251,6 @@ li {
     transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
   }
 }
-
 </style>
 </head>
 
@@ -372,7 +363,7 @@ li {
         }
         items.sort((a, b) => a.balance - b.balance)
         board.innerHTML = items.length
-            ? items.slice(0, 10).map(u => `<li style="opacity: 0.8">${u.name} <span style="opacity: 1">${u.balance}</span> т.</li>`).join('')
+            ? items.slice(0, 10).map(u => `<li>${u.name}:<span style="color: transparent;">-</span>${u.balance}<span style="color: transparent;">-</span>т.</li>`).join('')
             : '<li>нет данных</li>'
     }
 
