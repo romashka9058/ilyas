@@ -2,12 +2,13 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#000">
   <meta name="description" content="Ильясова биография">
   <link rel="icon" type="image/png" href="p/8.jpg">
   <link rel="stylesheet" href="style.css">
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
   <title>Биография</title>
 <style>
 ::-webkit-scrollbar {width: 0; height: 0;}
@@ -52,7 +53,7 @@ body::before{
 
 .container {
   background-color: rgba(34, 15, 15, 0.94);
-  width: min(90%, 100rem);
+  width: min(90%, 80rem);
   padding-bottom: 4vmin;
   border-radius: min(5vmin, 2rem);
   margin: 0 auto 0;
@@ -73,14 +74,14 @@ body::before{
 
 h1 {
   font-family: 'africa', sans-serif;
-  font-size: min(21vmin, 20rem);
+  font-size: min(21vmin, 13rem);
   color: #d2691e;
   text-shadow: 0 0 15vmin rgb(164, 91, 40);
   transform: scaleY(1.5);
 }
 
 .subtitle {
-  font-size: min(4vmin, 2rem);
+  font-size: min(4vmin, 1.5rem);
   color: #dfdfdf;
   margin-top: min(4vmin, 3rem);
   z-index: 1;
@@ -96,7 +97,7 @@ section {
 h2 {
   font-family: 'africa', sans-serif;
   color: #cd853f;
-  font-size: min(16vmin, 11rem);
+  font-size: min(16vmin, 9rem);
   letter-spacing: -0.05em;
   line-height: 0.8;
   margin: 3.5vmin 1vmin 0;
@@ -104,9 +105,9 @@ h2 {
 }
 
 section p {
-  max-width: min(85vw, 92rem);
+  max-width: min(85vw, 75rem);
   margin: 0 auto;
-  font-size: min(4.25vmin, 2.2rem);
+  font-size: min(4.25vmin, 1.8rem);
   transform: scaleY(.9);
   letter-spacing: -0.06em;
 }
@@ -141,16 +142,6 @@ section p {
   border-color: #d2691e;
 }
 
-iframe {
-  width: 100%; 
-  height: 90vh; 
-  border: none;
-  bottom: -1vmin;
-  position: relative;
-  margin-top: 10vmin;
-  border-radius: 4vmin 4vmin 0 0;
-  box-shadow: 0 0 6vmin rgb(25, 9, 9);
-}
 
 
 
@@ -166,33 +157,295 @@ iframe {
   z-index:10;
 }
 .gallery-itemm {
-  width: min(85%, 50rem);
+  width: min(85%, 40rem);
   height: 50vh;
   border-radius: 2vmin;
   box-shadow: 0 0 50vmin rgb(40, 0, 108);
   border: .2vmin inset rgb(141, 77, 255);
 }
 #mp p, #mp pp, #mp ppp {
-  font-size: min(7vmin, 3.5rem);
+  font-size: min(7vmin, 3rem);
   line-height: 0.65em;
   letter-spacing: -0.08em;
   margin: min(1vmin, 0.4rem);
   color: #d5d1ff;
 }
 #mp ppp {
-  font-size: min(17vmin, 8rem);
+  font-size: min(17vmin, 7rem);
   color: #fff;
   text-shadow: 0 0 10vmin rgb(172, 172, 172);
   font-family: 'BinnerDi', sans-serif;
   transform: scaleY(1.25) scaleX(2);
 }
 #mp pp {
-  font-size: min(4vmin, 2rem);
+  font-size: min(4vmin, 1.5rem);
   color: #5d5e8b;
   position: fixed;
   display: flex;
   align-self: center;
   bottom: 0;
+}
+
+
+
+
+
+
+
+
+@font-face {
+  font-family: 'buyan';
+  src: url('font/BuyanBold.woff') format('woff');}
+@font-face {
+  font-family: 'Copperplate';
+  src: url('font/ofont.ru_Copperplate.woff') format('woff');}
+@font-face {
+  font-family: 'BinnerDi';
+  src: url('font/ofont.ru_BinnerDi_1.woff') format('woff');}
+
+
+:root {--primary: #FF0200; --secondary: #FFAE2FB0;}
+* {margin: 0; box-sizing: border-box;}
+
+.con {
+  font-family: 'Copperplate', sans-serif;
+  background: url("wood.png");
+  color: white;
+  /*! display: flex; */
+  /*! flex-direction: column; */
+  /*! justify-content: center; */
+  line-height: 0.8;
+  position: relative;
+  margin-top: 10vmin;
+  /*! border-radius: 4vmin 4vmin 0 0; */
+  box-shadow: 0 0 4vmin rgb(25, 9, 9);
+  background-size: 100vmin;
+}
+.con::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, #2B0F07, #220F09);
+}
+
+
+
+.pulse {animation: extreme-evolution 10s infinite;}
+.balance.animate {animation: balancePulse 0.6s ease;}
+.slot.hit {animation: slotHit 0.4s ease;}
+
+
+
+@keyframes balancePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }}
+
+@keyframes titleGlow {
+  0% { text-shadow: 0 0 10px var(--primary); }
+  100% { text-shadow: 0 0 25px var(--primary), 0 0 35px var(--primary); }}
+
+@keyframes roll {
+  0% { transform: rotateX(0%); }
+  50% { transform: rotateX(1600deg); }
+  90% { transform: rotateX(1240deg); }
+  100% { transform: rotateX(0deg); }}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }}
+
+@keyframes slotHit {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }}
+
+
+
+po {
+  color: var(--primary);
+  font-size: min(25vmin, 11rem);
+  text-shadow: 0 0 5vmin #000;
+  font-family: 'BinnerDi';
+  margin: 3vmin;
+  margin-top: 5vmin;
+  margin-bottom: 1vmin;
+}
+
+.con {
+  /*! width: 100%; */
+  /*! max-width: 1200px; */
+  /*! max-height: 90vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gcon {
+  border-radius: 4vmin;
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 87, 94, 0.7);
+  margin-bottom: 4vmin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min(75vmin, 50rem);
+  position: relative;
+  /*! overflow: hidden; */
+  transition: transform 0.5s, box-shadow 0.3s;
+  padding: min(2.5vmin, 1.5rem);
+  border: .2vmin solid var(--secondary);
+  /*! display: block; */
+  /*! overflow: hidden; */
+}
+
+.gcon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient( 45deg, #8601004F, #A8670059, #8201005E );
+  z-index: -1;
+  backdrop-filter: blur(2px);
+  border-radius: 4vmin;
+}
+
+.balance {
+  font-size: min(7vmin, 2.5rem);
+  margin-bottom: 2vmin;
+  text-align: center;
+  padding: 2vmin;
+  background: rgba(21, 21, 21, 0.55);
+  border-radius: 3vmin;
+  width: 100%;
+  transition: transform .4s;
+  backdrop-filter: blur(2px);
+  border: 0.2vmin solid var(--secondary);
+}
+
+#balance {
+  color: #FFAE2E;
+  font-family: 'copperplate', monospace;
+  text-shadow: 0 0 3vmin #FF9C00;
+}
+
+.slot-machine {
+  display: flex;
+  justify-content: space-around;
+  gap: 1vmin;
+  perspective: 25vmin;
+}
+
+.slot {
+  font-size: min(19vmin, 12rem);
+  width: min(20vmin, 13rem);
+  height: min(30vmin, 18rem);
+  background: linear-gradient(145deg, #333, #222);
+  border-radius: 2vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f39c12;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  position: relative;
+}
+
+.slot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+}
+
+.slot.rolling {
+  animation: roll 1.5s;
+}
+
+.slot.rolling::before {
+  animation: shine 1s linear;
+}
+
+.spin-btn {
+  padding: min(2vmin, 1.5rem) 0;
+  background: linear-gradient(to bottom, var(--primary), #c0392b);
+  color: white;
+  border-radius: 2vmin;
+  font-size: min(5vmin, 3rem);
+  margin-top: 2vmin;
+  font-family: 'Copperplate', monospace;
+  position: relative;
+  overflow: hidden;
+  transition: transform .4s;
+  border: .2vmin solid var(--secondary);
+  letter-spacing: -.1em;
+  width: 80%;
+}
+
+.spin-btn:active {
+  transform: scale(0.9);
+}
+
+.debt-con {
+  background: rgba(255, 215, 0, 0.12);
+  padding: 1.5vmin;
+  border-radius: 3vmin;
+  box-shadow: 0 0 2vmin rgba(255, 215, 0, 0.26);
+  text-align: center;
+  margin-bottom: 4vmin;
+  width: min(70vmin, 48rem);
+  transition: transform 0.3s;
+}
+
+.debt-con h2 {
+  color: #FFA922;
+  font-size: min(11vmin, 7rem);
+  font-family: 'BinnerDi';
+  margin: 0;
+  margin-bottom: 1vmin;
+}
+
+.debt-con p {
+  font-size: min(5vmin, 2rem);
+}
+
+
+ol {
+  text-align:left; 
+  font-size: min(5vmin, 2rem);
+  padding-left: min(8vmin, 5rem);
+}
+.lider {
+  display: block ruby;
+  margin-bottom: 1vmin;
+  letter-spacing: -0.07em;
+}
+
+
+
+@keyframes extreme-evolution {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
+  }
+  20% {
+    transform: rotateX(45deg) rotateY(-30deg) rotateZ(10deg) scale(1.05);
+  }
+  40% {
+    transform: rotateX(-30deg) rotateY(60deg) rotateZ(-15deg) scale(0.8);
+  }
+  45% {transform: rotatez(-300deg)}
+  60% {
+    transform: rotateX(180deg) rotateY(20deg)  scale(1.05);
+  }
+  80% {
+    transform: rotateX(-10deg) rotateY(-120deg)  scale(.1);
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
+  }
 }
 </style>
 </head>
@@ -305,7 +558,28 @@ iframe {
             </div>
           </div>
         </section>
-            <iframe src="./hshs.html"></iframe>
+        
+
+      <div class="con">
+        <po class="pulse">КАЗИНО</po>
+        <div class="gcon">
+            <div class="balance" style="display: none;">Игрок: <span id="playerName">...</span></div>
+            <div class="balance">баланс: <span id="balance">100</span> тысяч</div>
+            <div class="slot-machine">
+                <div class="slot" id="slot1">7</div>
+                <div class="slot" id="slot2"><div style="letter-spacing: -0.285em;font-style: italic;">8=3=</div></div>
+                <div class="slot" id="slot3">7</div>
+            </div>
+            <button class="spin-btn" onclick="spin()">крутить</button>
+        </div>
+
+        <div class="debt-con">
+            <h2>ТОП 9</h2>
+            <ol id="leaderboard"></ol>
+        </div>
+    </div>
+
+
       </main>
 
   <script>
@@ -334,5 +608,153 @@ iframe {
       }
     }
   </script>
+
+  <script>
+    const $ = id => document.getElementById(id)
+    const slots = [$('slot1'), $('slot2'), $('slot3')]
+    const MAX_DELTA = 10
+    const SAVE_DELAY = 500
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCOF31IXWBEpZa4P8WfhOSVMYDI6WfSH4g",
+        authDomain: "chat-ac428.firebaseapp.com",
+        databaseURL: "https://chat-ac428-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "chat-ac428",
+        storageBucket: "chat-ac428.firebasestorage.app"
+    }
+
+    firebase.initializeApp(firebaseConfig)
+    const database = firebase.database()
+
+    const userId = localStorage.getItem('userId') || generateUserId()
+    let userName = localStorage.getItem('userName') || ''
+    let balance = Number(localStorage.getItem('balance')) || 100
+    let saving = false
+
+    localStorage.setItem('userId', userId)
+
+    initUser()
+    loadLeaderboard()
+
+    function generateUserId() {
+        return 'user_' + Math.random().toString(36).slice(2, 12) + '_' + Date.now().toString(36)
+    }
+
+    function promptForName() {
+        let name = localStorage.getItem('userName')
+        if (!name) {
+            name = prompt('Введите имя для сохранения счета', '')?.trim() || 'Игрок'
+            localStorage.setItem('userName', name)
+        }
+        return name
+    }
+
+    function initUser() {
+        userName = promptForName()
+        const userRef = database.ref('users/' + userId)
+        userRef.once('value').then(snapshot => {
+            const data = snapshot.val()
+            if (data) {
+                if (data.name) {
+                    userName = data.name
+                    localStorage.setItem('userName', userName)
+                }
+                balance = Number.isFinite(data.balance) ? data.balance : balance
+            } else {
+                userRef.set({
+                    name: userName,
+                    balance,
+                    createdAt: Date.now()
+                })
+            }
+            updateUI()
+        }).catch(console.error)
+    }
+
+    function updateUI() {
+        $('playerName').textContent = userName
+        $('balance').textContent = balance
+    }
+
+    function saveUserState(newBalance) {
+        const userRef = database.ref('users/' + userId)
+        return userRef.update({
+            balance: newBalance,
+            lastUpdate: Date.now()
+        })
+    }
+
+    function renderLeaderboard(users) {
+        const board = $('leaderboard')
+        const items = []
+        for (const key in users) {
+            if (users[key]) {
+                const balanceValue = Number(users[key].balance)
+                if (Number.isFinite(balanceValue)) {
+                    items.push({ name: users[key].name || 'Игрок', balance: balanceValue })
+                }
+            }
+        }
+        items.sort((a, b) => a.balance - b.balance)
+        board.innerHTML = items.length
+            ? items.slice(0, 10).map(u => `<li><div class="lider">${u.name}: ${u.balance} тысяч</div></li>`).join('')
+            : '<li>нет данных</li>'
+    }
+
+    function loadLeaderboard() {
+        database.ref('users').orderByChild('balance').limitToFirst(9).on('value', snapshot => {
+            renderLeaderboard(snapshot.val() || {})
+        })
+    }
+
+    function applyBalanceChange(delta) {
+        delta = Math.max(delta, -MAX_DELTA)
+        delta = Math.min(delta, 0)
+        if (delta === 0) return
+
+        saving = true
+        setTimeout(() => {
+            balance += delta
+            updateUI()
+            saveUserState(balance).catch(console.error)
+            localStorage.setItem('balance', balance)
+            saving = false
+        }, SAVE_DELAY)
+    }
+
+    function spin() {
+        if (saving) return
+        const btn = document.querySelector('.spin-btn')
+        btn.disabled = true
+        btn.textContent = 'опа опа щащащащщ'
+        slots.forEach(s => s.classList.add('rolling'))
+
+        const t = setInterval(() => slots.forEach(s => s.textContent = Math.floor(Math.random() * 10)), 200)
+        setTimeout(() => {
+            clearInterval(t)
+            let v
+            do {
+                v = slots.map(() => Math.floor(Math.random() * 10))
+            } while (v[0] === v[1] && v[1] === v[2])
+
+            slots.forEach((s, i) => {
+                s.textContent = v[i]
+                s.classList.remove('rolling')
+            })
+            slots.forEach((slot, i) => {
+                setTimeout(() => {
+                    slot.classList.add('hit')
+                    setTimeout(() => slot.classList.remove('hit'), 400)
+                }, i * 120)
+            })
+
+            applyBalanceChange(-10)
+            setTimeout(() => {
+                btn.disabled = false
+                btn.textContent = 'додеп'
+            }, SAVE_DELAY + 150)
+        }, 1500)
+    }
+</script>
 </body>
 </html>
